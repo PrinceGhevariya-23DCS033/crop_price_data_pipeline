@@ -28,21 +28,26 @@ class MandiPriceFetcher:
     Fetch crop prices from data.gov.in Agmarknet API.
     """
     
-    def __init__(self, api_key: Optional[str] = None):
+    def __init__(self, api_key: Optional[str] = None, use_api: bool = True):
         """
         Initialize fetcher.
         
         Args:
             api_key: data.gov.in API key (or reads from env DATA_GOV_API_KEY)
+            use_api: Whether to use API (default: True for fresh data)
         """
         self.api_key = api_key or os.getenv("DATA_GOV_API_KEY")
-        if not self.api_key:
-            raise ValueError("DATA_GOV_API_KEY not found in environment")
+        self.use_api = use_api and bool(self.api_key)
         
         self.resource_id = "35985678-0d79-46b4-9ed6-6f13308a1d24"
         self.base_url = f"https://api.data.gov.in/resource/{self.resource_id}"
         self.timeout = 30
         self.max_retries = 3
+        
+        if not self.use_api:
+            print("ℹ️  API disabled - will use CSV fallback")
+        else:
+            print("✓ API enabled - will fetch latest data from data.gov.in")
     
     
     def fetch_latest_prices(
@@ -50,21 +55,25 @@ class MandiPriceFetcher:
         state: str = "Gujarat",
         commodity: Optional[str] = None,
         district: Optional[str] = None,
-        limit: int = 1000
+        days_back: int = 30,
+        limit: int = 10000
     ) -> pd.DataFrame:
         """
-        Fetch latest mandi prices.
+        Fetch ONLY recent mandi prices (optimized for latest data).
         
         Args:
             state: State name (default: Gujarat)
             commodity: Specific commodity (optional)
             district: Specific district (optional)
-            limit: Max records to fetch
+            days_back: Number of days to look back (default: 30)
+            limit: Max records to fetch (default: 10000 for better coverage)
             
         Returns:
-            DataFrame with columns: State, District, Market, Commodity, 
-                                   Arrival_Date, Modal_Price, etc.
+            DataFrame with recent records only, sorted by date descending
         """
+        
+        if not self.api_key:
+            return pd.DataFrame()
         
         params = {
             "api-key": self.api_key,
@@ -80,6 +89,9 @@ class MandiPriceFetcher:
         if district:
             params["filters[District]"] = district
         
+        # Calculate cutoff date
+        cutoff_date = datetime.now() - timedelta(days=days_back)
+        
         for attempt in range(self.max_retries):
             try:
                 response = requests.get(
@@ -93,12 +105,11 @@ class MandiPriceFetcher:
                     records = data.get("records", [])
                     
                     if not records:
-                        print(f"⚠ No records found for filters: {params}")
                         return pd.DataFrame()
                     
                     df = pd.DataFrame(records)
                     
-                    # Clean data
+                    # Parse dates and prices
                     df["Arrival_Date"] = pd.to_datetime(
                         df["Arrival_Date"], 
                         dayfirst=True, 
@@ -109,19 +120,28 @@ class MandiPriceFetcher:
                         errors="coerce"
                     )
                     
+                    # Remove invalid rows
                     df = df.dropna(subset=["Commodity", "Arrival_Date", "Modal_Price"])
+                    
+                    if df.empty:
+                        return pd.DataFrame()
+                    
+                    # FILTER: Keep only recent data
+                    df = df[df["Arrival_Date"] >= cutoff_date]
+                    
+                    # Sort by date descending (newest first)
+                    df = df.sort_values("Arrival_Date", ascending=False)
                     
                     return df
                 
                 else:
-                    print(f"⚠ HTTP {response.status_code}")
-                    time.sleep(2 ** attempt)
+                    if attempt < self.max_retries - 1:
+                        time.sleep(2 ** attempt)
             
             except (Timeout, RequestException) as e:
-                print(f"⚠ Request failed (attempt {attempt + 1}): {e}")
-                time.sleep(2 ** attempt)
+                if attempt < self.max_retries - 1:
+                    time.sleep(2 ** attempt)
         
-        print("❌ Failed to fetch data after retries")
         return pd.DataFrame()
     
     
@@ -257,11 +277,8 @@ class MandiPriceFetcher:
         days_30: int = 30
     ) -> Optional[Dict]:
         """
-        Get current price with smart fallback logic:
-        1. Try API: average of last 15 days from API
-        2. If API fails, try CSV: average of last 15 days
-        3. If not available, try CSV: last 30 days
-        4. If still not available, use latest available price with date flag
+        Get current price with smart fallback logic FOR CACHE JSON FORMAT.
+        Returns data in monthly cache format.
         
         Args:
             commodity: Crop name
@@ -271,73 +288,64 @@ class MandiPriceFetcher:
             days_30: Days for second attempt
             
         Returns:
-            Dict with price, days_used, data_until_date flag
+            Dict in cache format: {commodity, district, year, month, cached_at, 
+                                  monthly_mean_price, days_traded, data_source, last_date}
         """
         
         if reference_date is None:
             reference_date = datetime.now()
         
-        # STEP 1: Try API first (last 15 days)
-        print(f"  Attempting to fetch current price from API...")
-        print(f"    → Commodity: {commodity}, District: {district}")
-        try:
-            api_df = self.fetch_latest_prices(
-                state="Gujarat",
-                commodity=commodity,
-                district=district,
-                limit=5000
-            )
-            
-            if not api_df.empty:
-                # Show what API returned
-                latest_api = api_df["Arrival_Date"].max()
-                oldest_api = api_df["Arrival_Date"].min()
-                print(f"    → API returned {len(api_df)} records")
-                print(f"    → Date range: {oldest_api.strftime('%Y-%m-%d')} to {latest_api.strftime('%Y-%m-%d')}")
+        # STEP 1: Try API first (last 30 days guaranteed fresh data)
+        if self.use_api:
+            print(f"  Fetching from API: {commodity} - {district}")
+            try:
+                api_df = self.fetch_latest_prices(
+                    state="Gujarat",
+                    commodity=commodity,
+                    district=district,
+                    days_back=days_30,  # Last 30 days
+                    limit=10000
+                )
                 
-                # Filter for last 15 days from reference date
-                cutoff_15_api = reference_date - timedelta(days=days_15)
-                print(f"    → Looking for data after {cutoff_15_api.strftime('%Y-%m-%d')} (reference: {reference_date.strftime('%Y-%m-%d')})")
-                api_df_15 = api_df[api_df["Arrival_Date"] >= cutoff_15_api]
-                
-                if not api_df_15.empty and len(api_df_15) >= 1:
-                    latest_api_date = api_df_15["Arrival_Date"].max()
-                    mean_price = api_df_15["Modal_Price"].mean()
+                if not api_df.empty:
+                    latest_date = api_df["Arrival_Date"].max()
+                    oldest_date = api_df["Arrival_Date"].min()
                     
-                    print(f"  ✓ Found {len(api_df_15)} days of API data within window")
+                    print(f"    ✓ API: {len(api_df)} records from {oldest_date.strftime('%Y-%m-%d')} to {latest_date.strftime('%Y-%m-%d')}")
+                    
+                    # Return in cache format
                     return {
-                        "monthly_mean_price": mean_price,
-                        "days_traded": len(api_df_15),
-                        "days_window": days_15,
-                        "data_until_date": latest_api_date.strftime("%Y-%m-%d"),
-                        "is_recent": True,
-                        "price_source": f"API: Average of last {len(api_df_15)} days (within {days_15} day window)",
-                        "data_source": "API"
+                        "commodity": commodity,
+                        "district": district,
+                        "year": reference_date.year,
+                        "month": reference_date.month,
+                        "cached_at": datetime.now().isoformat(),
+                        "monthly_mean_price": float(api_df["Modal_Price"].mean()),
+                        "days_traded": int(api_df["Arrival_Date"].nunique()),
+                        "data_source": "API",
+                        "last_date": latest_date.strftime("%Y-%m-%d"),
+                        "price_source": "API"
                     }
                 else:
-                    days_old = (reference_date - latest_api).days
-                    print(f"  ⚠ API data is {days_old} days old (latest: {latest_api.strftime('%Y-%m-%d')})")
-                    print(f"  ⚠ No API data within last {days_15} days from {reference_date.strftime('%Y-%m-%d')}")
-            else:
-                print(f"  ⚠ API returned no data for {commodity} in {district}")
-        except Exception as e:
-            print(f"  ⚠ API fetch failed: {e}")
-            import traceback
-            traceback.print_exc()
+                    print(f"    ⚠ API returned no recent data")
+            
+            except Exception as e:
+                print(f"    ⚠ API fetch error: {e}")
         
         # STEP 2: Fallback to CSV
         print(f"  Falling back to CSV data...")
         
-        # Load commodity CSV
         commodity_file = commodity.lower().replace(" ", "_") + "_final.csv"
         file_path = os.path.join("processed", commodity_file)
         
         if not os.path.exists(file_path):
+            print(f"    ❌ CSV file not found: {file_path}")
             return None
         
         df = pd.read_csv(file_path)
         
         if "date" not in df.columns or "monthly_mean_price" not in df.columns:
+            print(f"    ❌ CSV missing required columns")
             return None
         
         df["date"] = pd.to_datetime(df["date"])
@@ -351,32 +359,35 @@ class MandiPriceFetcher:
             df = df[df["district_norm"] == normalized_district].copy()
         
         if df.empty:
+            print(f"    ❌ No CSV data for district: {district}")
             return None
         
-        # Sort by date
+        # Sort by date and get last 30 days
         df = df.sort_values("date", ascending=False)
+        cutoff = reference_date - timedelta(days=days_30)
+        df_recent = df[df["date"] >= cutoff]
         
-        # Get latest available date in data
-        latest_date = df["date"].max()
+        if df_recent.empty:
+            # Use latest available data
+            df_recent = df.head(days_30)
         
-        # Try 1: Last 15 days from reference
-        cutoff_15 = reference_date - timedelta(days=days_15)
-        df_15 = df[df["date"] >= cutoff_15]
+        latest_date = df_recent["date"].max()
         
-        if not df_15.empty and len(df_15) >= 1:
-            return {
-                "monthly_mean_price": df_15["monthly_mean_price"].mean(),
-                "days_traded": len(df_15),
-                "days_window": days_15,
-                "data_until_date": latest_date.strftime("%Y-%m-%d"),
-                "is_recent": True,
-                "price_source": f"CSV: Average of last {len(df_15)} days (within {days_15} day window)",
-                "data_source": "CSV"
-            }
+        print(f"    ✓ CSV: {len(df_recent)} records, latest: {latest_date.strftime('%Y-%m-%d')}")
         
-        # Try 2: Last 30 days from reference
-        cutoff_30 = reference_date - timedelta(days=days_30)
-        df_30 = df[df["date"] >= cutoff_30]
+        # Return in cache format
+        return {
+            "commodity": commodity,
+            "district": district,
+            "year": reference_date.year,
+            "month": reference_date.month,
+            "cached_at": datetime.now().isoformat(),
+            "monthly_mean_price": float(df_recent["monthly_mean_price"].mean()),
+            "days_traded": int(len(df_recent)),
+            "data_source": "CSV",
+            "last_date": latest_date.strftime("%Y-%m-%d"),
+            "price_source": "CSV"
+        }
         
         if not df_30.empty and len(df_30) >= 1:
             return {
