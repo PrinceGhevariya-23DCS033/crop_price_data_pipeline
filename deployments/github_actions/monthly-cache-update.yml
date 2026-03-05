@@ -1,0 +1,157 @@
+name: Monthly Cache Update to HF Space
+
+# Run on 20th of each month at 2:00 AM UTC
+# OR trigger manually from GitHub Actions tab
+on:
+  schedule:
+    - cron: '0 2 20 * *'  # 02:00 UTC on 20th of every month
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  update-cache-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # ============ STEP 1: Checkout main repo ============
+      - name: Checkout Crop_Price_V2 repository
+        uses: actions/checkout@v4
+        with:
+          path: crop-price-v2
+
+      # ============ STEP 2: Setup Python ============
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # ============ STEP 3: Install dependencies ============
+      - name: Install dependencies
+        working-directory: crop-price-v2
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # ============ STEP 4: Run cache update script ============
+      - name: Update monthly cache
+        working-directory: crop-price-v2
+        env:
+          DATA_GOV_API_KEY: ${{ secrets.DATA_GOV_API_KEY }}
+        run: |
+          echo "Starting cache update..."
+          python update_monthly_cache.py
+          echo "Cache update completed!"
+
+      # ============ STEP 5: Verify cache was created ============
+      - name: Verify cache files
+        working-directory: crop-price-v2
+        run: |
+          echo "Checking cache files..."
+          ls -la monthly_cache/
+          ls -la monthly_cache/prices/ | head -10
+          ls -la monthly_cache/rainfall/
+          ls -la monthly_cache/ndvi/
+          
+          # Count files
+          PRICE_COUNT=$(ls monthly_cache/prices/*.json 2>/dev/null | wc -l)
+          RAIN_COUNT=$(ls monthly_cache/rainfall/*.json 2>/dev/null | wc -l)
+          NDVI_COUNT=$(ls monthly_cache/ndvi/*.json 2>/dev/null | wc -l)
+          
+          echo "Price files: $PRICE_COUNT"
+          echo "Rainfall files: $RAIN_COUNT"
+          echo "NDVI files: $NDVI_COUNT"
+          
+          # Validate minimum counts
+          if [ $PRICE_COUNT -lt 1000 ]; then
+            echo "Warning: Less than 1000 price files generated"
+          fi
+
+      # ============ STEP 6: Clone HF Space repository ============
+      - name: Clone Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_USERNAME: ${{ secrets.HF_USERNAME }}
+          HF_SPACE_NAME: ${{ secrets.HF_SPACE_NAME }}
+        run: |
+          echo "Cloning HF Space repository..."
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          
+          # Clone using token for authentication
+          git clone https://oauth2:${HF_TOKEN}@huggingface.co/spaces/${HF_USERNAME}/${HF_SPACE_NAME} hf-space
+          
+          echo "HF Space cloned successfully"
+
+      # ============ STEP 7: Update cache in HF Space ============
+      - name: Update cache in HF Space repository
+        run: |
+          echo "Syncing monthly_cache to HF Space..."
+          
+          # Remove old cache
+          rm -rf hf-space/monthly_cache
+          
+          # Copy new cache
+          cp -r crop-price-v2/monthly_cache hf-space/
+          
+          # Optional: Also update src if needed
+          # cp -r crop-price-v2/src hf-space/
+          
+          echo "Cache files synced!"
+
+      # ============ STEP 8: Commit and push to HF Space ============
+      - name: Commit and push to Hugging Face
+        working-directory: hf-space
+        run: |
+          # Check if there are changes
+          git status
+          
+          # Add all changes
+          git add monthly_cache/
+          
+          # Check if there's anything to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            # Commit with date
+            COMMIT_DATE=$(date +'%Y-%m-%d')
+            git commit -m "Monthly cache update: ${COMMIT_DATE}"
+            
+            # Push to HF Space
+            git push
+            
+            echo "✅ Cache pushed to Hugging Face Space!"
+          fi
+
+      # ============ STEP 9: Create summary ============
+      - name: Create deployment summary
+        if: always()
+        run: |
+          echo "## 📊 Monthly Cache Update Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Date:** $(date +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          PRICE_COUNT=$(ls crop-price-v2/monthly_cache/prices/*.json 2>/dev/null | wc -l || echo 0)
+          RAIN_COUNT=$(ls crop-price-v2/monthly_cache/rainfall/*.json 2>/dev/null | wc -l || echo 0)
+          NDVI_COUNT=$(ls crop-price-v2/monthly_cache/ndvi/*.json 2>/dev/null | wc -l || echo 0)
+          
+          echo "### Cache Statistics" >> $GITHUB_STEP_SUMMARY
+          echo "- Price files: $PRICE_COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "- Rainfall files: $RAIN_COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "- NDVI files: $NDVI_COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Status" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Cache updated and pushed to Hugging Face Space" >> $GITHUB_STEP_SUMMARY
+
+      # ============ STEP 10: Notify on failure ============
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "## ❌ Cache Update Failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The monthly cache update workflow failed." >> $GITHUB_STEP_SUMMARY
+          echo "Please check the logs above for details." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Common issues:**" >> $GITHUB_STEP_SUMMARY
+          echo "- DATA_GOV_API_KEY not set or invalid" >> $GITHUB_STEP_SUMMARY
+          echo "- HF_TOKEN not set or lacks write permissions" >> $GITHUB_STEP_SUMMARY
+          echo "- Network connectivity issues" >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gujarat Crop Price Forecasting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .result {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .result.show {
+            display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .result-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .result-item h3 {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .result-item p {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .result-item.positive p {
+            color: #28a745;
+        }
+        
+        .result-item.negative p {
+            color: #dc3545;
+        }
+        
+        .error {
+            display: none;
+            padding: 15px;
+            background: #f8d7da;
+            color: #721c24;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .error.show {
+            display: block;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .loading.show {
+            display: block;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 12px;
+            background: #e0e0e0;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌾 Gujarat Crop Price Forecasting</h1>
+            <p>Harvest-Window Price Predictions for Smart Farming Decisions</p>
+        </div>
+        
+        <div class="card">
+            <!-- Temporarily hide Compare tab - not yet available in deployed API -->
+            <!--
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('single')">Single Prediction</button>
+                <button class="tab" onclick="switchTab('compare')">Compare Crops</button>
+            </div>
+            -->
+            
+            <!-- Single Prediction Tab -->
+            <div id="single-tab" class="tab-content active">
+                <form id="prediction-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="commodity">🌱 Crop / Commodity</label>
+                            <select id="commodity" required>
+                                <option value="">Select a crop...</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="district">📍 District</label>
+                            <select id="district" required>
+                                <option value="">Select district...</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="year">📅 Year</label>
+                            <input type="number" id="year" min="2020" max="2030" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="month">📅 Month</label>
+                            <select id="month" required>
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box" style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-bottom: 10px;">
+                        <p style="margin: 0; color: #2e7d32; font-weight: 500;">
+                            ✅ <strong>Best data coverage:</strong> Onion, Tomato, Groundnut, Cotton, Wheat, Maize, Cabbage
+                        </p>
+                    </div>
+                    
+                    <div class="info-box" style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                        <p style="margin: 0; color: #1976d2;">
+                            ℹ️ Predictions use cached market prices, weather, and NDVI data combined with 18 months of historical price trends.
+                        </p>
+                    </div>
+                    
+                    <button type="submit" class="btn">🔮 Predict Harvest Price</button>
+                </form>
+                
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Analyzing market trends and environmental data...</p>
+                </div>
+                
+                <div class="error" id="error"></div>
+                
+                <div class="result" id="result">
+                    <h2>📊 Prediction Results</h2>
+                    <div class="result-grid" id="result-grid"></div>
+                </div>
+            </div>
+            
+            <!-- Compare feature - temporarily disabled until API supports it -->
+            <!--
+            <div id="compare-tab" class="tab-content">
+                <p style="color: #666; margin-bottom: 20px;">
+                    Compare multiple crops to decide which one to sow based on expected returns.
+                </p>
+                
+                <form id="compare-form">
+                    <div class="form-group">
+                        <label for="compare-district">📍 District</label>
+                        <select id="compare-district" required>
+                            <option value="">Select district...</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="compare-year">📅 Year</label>
+                            <input type="number" id="compare-year" min="2020" max="2030" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="compare-month">📅 Month</label>
+                            <select id="compare-month" required>
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Select Crops to Compare (hold Ctrl/Cmd to select multiple)</label>
+                        <select id="compare-crops" multiple size="8" style="height: 200px;">
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn">📊 Compare Crops</button>
+                </form>
+                
+                <div class="loading" id="compare-loading">
+                    <div class="spinner"></div>
+                    <p>Comparing crop profitability...</p>
+                </div>
+                
+                <div class="error" id="compare-error"></div>
+                
+                <div class="result" id="compare-result">
+                    <h2>🏆 Crop Comparison Results</h2>
+                    <div id="compare-result-content"></div>
+                </div>
+            </div>
+            -->
+        </div>
+    </div>
+    
+    <script>
+        const API_BASE = 'https://princegh410-crop-price.hf.space';
+        
+        // Load crops and districts on page load
+        async function initialize() {
+            try {
+                // Load crops
+                console.log('Fetching crops from:', `${API_BASE}/api/crops`);
+                const cropsRes = await fetch(`${API_BASE}/api/crops`, {
+                    mode: 'cors',
+                    headers: {
+                        'Accept': 'application/json',
+                    }
+                });
+                
+                if (!cropsRes.ok) {
+                    throw new Error(`Failed to fetch crops: ${cropsRes.status} ${cropsRes.statusText}`);
+                }
+                
+                const crops = await cropsRes.json();
+                console.log('Loaded crops:', crops.length);
+                
+                const commoditySelect = document.getElementById('commodity');
+                
+                crops.forEach(crop => {
+                    commoditySelect.add(new Option(crop, crop));
+                });
+                
+                // Load districts
+                console.log('Fetching districts from:', `${API_BASE}/api/districts`);
+                const districtsRes = await fetch(`${API_BASE}/api/districts`, {
+                    mode: 'cors',
+                    headers: {
+                        'Accept': 'application/json',
+                    }
+                });
+                
+                if (!districtsRes.ok) {
+                    throw new Error(`Failed to fetch districts: ${districtsRes.status} ${districtsRes.statusText}`);
+                }
+                
+                const districtsData = await districtsRes.json();
+                // API returns either {value: [...], Count: X} or {districts: [...]}
+                const districts = districtsData.value || districtsData.districts || districtsData;
+                console.log('Loaded districts:', districts.length);
+                
+                const districtSelect = document.getElementById('district');
+                
+                districts.forEach(district => {
+                    // Capitalize first letter for display while keeping lowercase value
+                    const displayName = district.charAt(0).toUpperCase() + district.slice(1);
+                    districtSelect.add(new Option(displayName, district));
+                });
+                
+                // Set current date
+                const now = new Date();
+                document.getElementById('year').value = now.getFullYear();
+                document.getElementById('month').value = now.getMonth() + 1;
+                
+                console.log('✅ Initialization complete');
+                
+            } catch (error) {
+                console.error('Initialization error:', error);
+                const errorMsg = `Failed to load data from API: ${error.message}. Check browser console for details.<br><br>API URL: ${API_BASE}<br><br>This might be a CORS issue. Try opening this page through a local server.`;
+                showError(errorMsg);
+            }
+        }
+        
+        /* Tabs disabled - commented out
+        // Switch tabs
+        function switchTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            
+            document.querySelector(`.tab:nth-child(${tabName === 'single' ? 1 : 2})`).classList.add('active');
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+        }
+        */
+        
+        // Handle single prediction form
+        document.getElementById('prediction-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const loading = document.getElementById('loading');
+            const error = document.getElementById('error');
+            const result = document.getElementById('result');
+            
+            loading.classList.add('show');
+            error.classList.remove('show');
+            result.classList.remove('show');
+            
+            try {
+                const commodity = document.getElementById('commodity').value;
+                const district = document.getElementById('district').value;
+                const year = parseInt(document.getElementById('year').value);
+                const month = parseInt(document.getElementById('month').value);
+                
+                const requestBody = {
+                    commodity: commodity,
+                    district: district,
+                    year: year,
+                    month: month
+                };
+                
+                console.log('Making prediction request to:', `${API_BASE}/api/predict`, requestBody);
+                const response = await fetch(`${API_BASE}/api/predict`, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+                
+                console.log('Response status:', response.status);
+                
+                // Clone response to read it multiple times if needed
+                const responseClone = response.clone();
+                
+                if (!response.ok) {
+                    let errorMessage = `Request failed with status ${response.status}`;
+                    try {
+                        const errorData = await response.json();
+                        errorMessage = errorData.detail || errorData.error || errorMessage;
+                    } catch (e) {
+                        // If response is not JSON, get text from clone
+                        try {
+                            const errorText = await responseClone.text();
+                            errorMessage = errorText || errorMessage;
+                        } catch (e2) {
+                            console.error('Failed to read error response:', e2);
+                        }
+                    }
+                    throw new Error(errorMessage);
+                }
+                
+                const prediction = await response.json();
+                console.log('Prediction result:', prediction);
+                displayResult(prediction);
+                
+            } catch (err) {
+                let errorMsg = err.message;
+                
+                // Handle specific error messages
+                if (errorMsg.includes('No price data available')) {
+                    errorMsg = `⚠️ No price data available for <strong>${document.getElementById('commodity').value}</strong> in <strong>${document.getElementById('district').value}</strong>.<br><br>
+                    This crop-district combination doesn't have recent price data in our database.<br><br>
+                    Try selecting:<br>
+                    • A different district where this crop is commonly traded<br>
+                    • A different crop that's available in this district`;
+                } else if (errorMsg.includes('Internal Server Error') || errorMsg.includes('500')) {
+                    errorMsg = `⚠️ API Error: The deployed model on Hugging Face is experiencing issues.<br><br>
+                    <strong>Possible causes:</strong><br>
+                    • Missing historical data files (processed/*.csv)<br>
+                    • Empty monthly cache (needs update)<br>
+                    • Missing model files<br><br>
+                    <strong>To fix:</strong> Make sure you've uploaded all required files to your HF Space:<br>
+                    - src/ folder<br>
+                    - production_model/ folder<br>
+                    - processed/ folder (CSV files)<br>
+                    - monthly_cache/ folder<br>
+                    - requirements.txt<br>
+                    - Dockerfile<br>
+                    - app.py`;
+                } else if (errorMsg.includes('404') || errorMsg.includes('Not Found')) {
+                    errorMsg = `⚠️ Data not found for this crop in this district.<br><br>
+                    The selected crop may not be commonly traded in this district.<br><br>
+                    Please try a different crop or district combination.`;
+                }
+                
+                showError(errorMsg);
+            } finally {
+                loading.classList.remove('show');
+            }
+        });
+        
+        /* Compare feature disabled - commented out until API supports it
+        // Handle compare form
+        document.getElementById('compare-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const loading = document.getElementById('compare-loading');
+            const error = document.getElementById('compare-error');
+            const result = document.getElementById('compare-result');
+            
+            const selectedCrops = Array.from(document.getElementById('compare-crops').selectedOptions)
+                .map(opt => opt.value);
+            
+            if (selectedCrops.length < 2) {
+                showError('Please select at least 2 crops to compare', 'compare');
+                return;
+            }
+            
+            loading.classList.add('show');
+            error.classList.remove('show');
+            result.classList.remove('show');
+            
+            try {
+                const formData = {
+                    district: document.getElementById('compare-district').value,
+                    commodities: selectedCrops,
+                    year: parseInt(document.getElementById('compare-year').value),
+                    month: parseInt(document.getElementById('compare-month').value)
+                };
+                
+                console.log('Making comparison request to:', `${API_BASE}/api/compare`);
+                const response = await fetch(`${API_BASE}/api/compare`, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || 'Comparison failed');
+                }
+                
+                const comparison = await response.json();
+                displayComparison(comparison);
+                
+            } catch (err) {
+                showError(err.message, 'compare');
+            } finally {
+                loading.classList.remove('show');
+            }
+        });
+        */
+        
+        function displayResult(prediction) {
+            const grid = document.getElementById('result-grid');
+            const isPositive = prediction.expected_return_percent > 0;
+            
+            grid.innerHTML = `
+                <div class="result-item">
+                    <h3>Commodity</h3>
+                    <p>${prediction.commodity}</p>
+                </div>
+                <div class="result-item">
+                    <h3>District</h3>
+                    <p>${prediction.district}</p>
+                </div>
+                <div class="result-item" style="grid-column: 1 / -1; background: #e8f5e9; border-left: 4px solid #4caf50;">
+                    <h3>Current Price (${prediction.current_month})</h3>
+                    <p style="font-size: 1.3em; font-weight: bold;">₹${prediction.current_price.toFixed(2)}</p>
+                </div>
+                <div class="result-item">
+                    <h3>Growth Period</h3>
+                    <p>${prediction.growth_horizon_months} months</p>
+                </div>
+                <div class="result-item">
+                    <h3>Harvest Window</h3>
+                    <p>${prediction.harvest_window_start}</p>
+                </div>
+                <div class="result-item ${isPositive ? 'positive' : 'negative'}">
+                    <h3>Predicted Price</h3>
+                    <p>₹${prediction.predicted_harvest_price.toFixed(2)}</p>
+                </div>
+                <div class="result-item ${isPositive ? 'positive' : 'negative'}">
+                    <h3>Expected Return</h3>
+                    <p>${prediction.expected_return_percent > 0 ? '+' : ''}${prediction.expected_return_percent.toFixed(2)}%</p>
+                </div>
+                <div class="result-item ${isPositive ? 'positive' : 'negative'}">
+                    <h3>Absolute Change</h3>
+                    <p>₹${prediction.absolute_change > 0 ? '+' : ''}${prediction.absolute_change.toFixed(2)}</p>
+                </div>
+                <div class="result-item" style="grid-column: 1 / -1; background: #f0f8ff; border-left: 4px solid #2196f3;">
+                    <h3>💡 Recommendation</h3>
+                    <p style="font-size: 1em;">${prediction.recommendation}</p>
+                </div>
+            `;
+            
+            document.getElementById('result').classList.add('show');
+        }
+        
+        /* Compare function - disabled
+        function displayComparison(comparison) {
+            const content = document.getElementById('compare-result-content');
+            
+            let html = `
+                <p style="margin-bottom: 20px;">
+                    <strong>District:</strong> ${comparison.district} | 
+                    <strong>Month:</strong> ${comparison.comparison_month} | 
+                    <strong>Crops Compared:</strong> ${comparison.crops_compared}
+                </p>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background: #667eea; color: white;">
+                            <th style="padding: 12px; text-align: left;">Rank</th>
+                            <th style="padding: 12px; text-align: left;">Crop</th>
+                            <th style="padding: 12px; text-align: right;">Current Price</th>
+                            <th style="padding: 12px; text-align: right;">Predicted Price</th>
+                            <th style="padding: 12px; text-align: right;">Expected Return</th>
+                            <th style="padding: 12px; text-align: center;">Growth Period</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            comparison.recommendations.forEach((rec, index) => {
+                const isPositive = rec.expected_return_percent > 0;
+                const rowColor = index % 2 === 0 ? '#f8f9fa' : 'white';
+                
+                html += `
+                    <tr style="background: ${rowColor};">
+                        <td style="padding: 12px; font-weight: bold;">#${index + 1}</td>
+                        <td style="padding: 12px;">${rec.commodity}</td>
+                        <td style="padding: 12px; text-align: right;">₹${rec.current_price.toFixed(2)}</td>
+                        <td style="padding: 12px; text-align: right;">₹${rec.predicted_harvest_price.toFixed(2)}</td>
+                        <td style="padding: 12px; text-align: right; color: ${isPositive ? '#28a745' : '#dc3545'}; font-weight: bold;">
+                            ${rec.expected_return_percent > 0 ? '+' : ''}${rec.expected_return_percent.toFixed(2)}%
+                        </td>
+                        <td style="padding: 12px; text-align: center;">${rec.growth_horizon_months} months</td>
+                    </tr>
+                `;
+            });
+            
+            html += `
+                    </tbody>
+                </table>
+            `;
+            
+            content.innerHTML = html;
+            document.getElementById('compare-result').classList.add('show');
+        }
+        */
+        
+        function showError(message, type = 'single') {
+            const errorElement = document.getElementById('error');
+            errorElement.innerHTML = message;
+            errorElement.classList.add('show');
+        }
+        
+        // Initialize on load
+        initialize();
+    </script>
+</body>
+</html>

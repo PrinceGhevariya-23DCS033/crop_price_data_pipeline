@@ -1,0 +1,1519 @@
+crop,district,status,current_price,predicted_price,return_pct,reason
+Ajwan,ahmadabad,OK,11537.599047619047,8103.2,-35.34,
+Ajwan,amreli,OK,10695.986111111113,8460.64,-23.44,
+Ajwan,anand,SKIP,,,,no price cache
+Ajwan,aravalli,SKIP,,,,no price cache
+Ajwan,banaskantha,OK,9789.204166666666,15673.26,47.07,
+Ajwan,bharuch,SKIP,,,,no price cache
+Ajwan,bhavnagar,SKIP,,,,only 6 months history (need 12)
+Ajwan,botad,SKIP,,,,no price cache
+Ajwan,chhotaudaipur,SKIP,,,,no price cache
+Ajwan,dahod,SKIP,,,,no price cache
+Ajwan,devbhumidwarka,SKIP,,,,only 5 months history (need 12)
+Ajwan,gandhinagar,SKIP,,,,no price cache
+Ajwan,girsomnath,SKIP,,,,no price cache
+Ajwan,jamnagar,OK,13758.15078042328,27058.65,67.64,
+Ajwan,junagadh,SKIP,,,,no price cache
+Ajwan,kachchh,SKIP,,,,only 10 months history (need 12)
+Ajwan,kheda,SKIP,,,,only 8 months history (need 12)
+Ajwan,mahesana,OK,10583.479626392127,16723.87,45.75,
+Ajwan,mahisagar,SKIP,,,,no price cache
+Ajwan,morbi,OK,7796.875,11557.83,39.36,
+Ajwan,narmada,SKIP,,,,no price cache
+Ajwan,navsari,SKIP,,,,no price cache
+Ajwan,panchmahals,SKIP,,,,no price cache
+Ajwan,patan,OK,9840.787948063431,16707.82,52.93,
+Ajwan,porbandar,SKIP,,,,only 11 months history (need 12)
+Ajwan,rajkot,SKIP,,,,no price cache
+Ajwan,sabarkantha,SKIP,,,,no price cache
+Ajwan,surat,SKIP,,,,only 10 months history (need 12)
+Ajwan,surendranagar,OK,8823.503412698414,12660.16,36.1,
+Ajwan,tapi,SKIP,,,,no price cache
+Ajwan,thedangs,SKIP,,,,no price cache
+Ajwan,vadodara,SKIP,,,,no price cache
+Ajwan,valsad,SKIP,,,,no price cache
+Amaranthus,ahmadabad,OK,1582.2777777777778,1251.46,-23.46,
+Amaranthus,amreli,SKIP,,,,no price cache
+Amaranthus,anand,SKIP,,,,no price cache
+Amaranthus,aravalli,SKIP,,,,no price cache
+Amaranthus,banaskantha,SKIP,,,,only 3 months history (need 12)
+Amaranthus,bharuch,SKIP,,,,no price cache
+Amaranthus,bhavnagar,SKIP,,,,no price cache
+Amaranthus,botad,OK,308.55406746031747,739.0,87.34,
+Amaranthus,chhotaudaipur,SKIP,,,,no price cache
+Amaranthus,dahod,SKIP,,,,no price cache
+Amaranthus,devbhumidwarka,SKIP,,,,no price cache
+Amaranthus,gandhinagar,SKIP,,,,no price cache
+Amaranthus,girsomnath,OK,4365.833333333333,6922.37,46.09,
+Amaranthus,jamnagar,SKIP,,,,no price cache
+Amaranthus,junagadh,SKIP,,,,no price cache
+Amaranthus,kachchh,SKIP,,,,only 2 months history (need 12)
+Amaranthus,kheda,SKIP,,,,no price cache
+Amaranthus,mahesana,SKIP,,,,no price cache
+Amaranthus,mahisagar,SKIP,,,,no price cache
+Amaranthus,morbi,SKIP,,,,no price cache
+Amaranthus,narmada,SKIP,,,,no price cache
+Amaranthus,navsari,SKIP,,,,no price cache
+Amaranthus,panchmahals,SKIP,,,,no price cache
+Amaranthus,patan,SKIP,,,,no price cache
+Amaranthus,porbandar,SKIP,,,,no price cache
+Amaranthus,rajkot,SKIP,,,,no price cache
+Amaranthus,sabarkantha,SKIP,,,,no price cache
+Amaranthus,surat,SKIP,,,,no price cache
+Amaranthus,surendranagar,OK,1757.4887866762865,1463.04,-18.34,
+Amaranthus,tapi,SKIP,,,,no price cache
+Amaranthus,thedangs,SKIP,,,,no price cache
+Amaranthus,vadodara,SKIP,,,,no price cache
+Amaranthus,valsad,SKIP,,,,no price cache
+Apple,ahmadabad,OK,7717.822729721996,5665.84,-30.91,
+Apple,amreli,SKIP,,,,no price cache
+Apple,anand,SKIP,,,,only 1 months history (need 12)
+Apple,aravalli,SKIP,,,,no price cache
+Apple,banaskantha,OK,9075.494758255305,6654.32,-31.03,
+Apple,bharuch,OK,6044.290854038184,4374.56,-32.33,
+Apple,bhavnagar,SKIP,,,,no price cache
+Apple,botad,SKIP,,,,no price cache
+Apple,chhotaudaipur,SKIP,,,,no price cache
+Apple,dahod,SKIP,,,,no price cache
+Apple,devbhumidwarka,SKIP,,,,no price cache
+Apple,gandhinagar,SKIP,,,,only 1 months history (need 12)
+Apple,girsomnath,SKIP,,,,only 3 months history (need 12)
+Apple,jamnagar,SKIP,,,,no price cache
+Apple,junagadh,OK,3823.0161841834633,5884.81,43.13,
+Apple,kachchh,SKIP,,,,only 9 months history (need 12)
+Apple,kheda,SKIP,,,,no price cache
+Apple,mahesana,SKIP,,,,no price cache
+Apple,mahisagar,SKIP,,,,no price cache
+Apple,morbi,SKIP,,,,no price cache
+Apple,narmada,SKIP,,,,no price cache
+Apple,navsari,SKIP,,,,only 10 months history (need 12)
+Apple,panchmahals,SKIP,,,,no price cache
+Apple,patan,SKIP,,,,only 1 months history (need 12)
+Apple,porbandar,OK,9602.32932647001,7981.07,-18.49,
+Apple,rajkot,OK,8683.187423582529,7105.02,-20.06,
+Apple,sabarkantha,SKIP,,,,no price cache
+Apple,surat,SKIP,,,,no price cache
+Apple,surendranagar,OK,8915.432836033648,12881.36,36.8,
+Apple,tapi,SKIP,,,,no price cache
+Apple,thedangs,SKIP,,,,no price cache
+Apple,vadodara,OK,6981.269841269841,10535.5,41.15,
+Apple,valsad,SKIP,,,,no price cache
+Banana,ahmadabad,OK,1550.5133446246064,1461.71,-5.9,
+Banana,amreli,OK,530.9375,979.43,61.23,
+Banana,anand,OK,1610.3536614566467,1454.16,-10.2,
+Banana,aravalli,SKIP,,,,no price cache
+Banana,banaskantha,OK,2730.322915987713,1818.08,-40.66,
+Banana,bharuch,OK,904.3884782113387,1107.35,20.25,
+Banana,bhavnagar,SKIP,,,,no price cache
+Banana,botad,SKIP,,,,no price cache
+Banana,chhotaudaipur,OK,860.0480881945165,1484.08,54.56,
+Banana,dahod,SKIP,,,,only 10 months history (need 12)
+Banana,devbhumidwarka,SKIP,,,,only 1 months history (need 12)
+Banana,gandhinagar,SKIP,,,,only 4 months history (need 12)
+Banana,girsomnath,OK,636.5799665533411,1124.7,56.92,
+Banana,jamnagar,SKIP,,,,only 1 months history (need 12)
+Banana,junagadh,OK,753.8099335785322,1208.89,47.23,
+Banana,kachchh,OK,1498.652849657553,2720.73,59.63,
+Banana,kheda,SKIP,,,,no price cache
+Banana,mahesana,OK,2099.7365544449794,1580.1,-28.43,
+Banana,mahisagar,SKIP,,,,no price cache
+Banana,morbi,SKIP,,,,no price cache
+Banana,narmada,OK,1983.665071685729,3116.48,45.18,
+Banana,navsari,OK,1710.1733016906196,1727.52,1.01,
+Banana,panchmahals,SKIP,,,,no price cache
+Banana,patan,SKIP,,,,no price cache
+Banana,porbandar,OK,2636.5758678063835,2011.7,-27.05,
+Banana,rajkot,OK,1821.7821476074378,2933.42,47.64,
+Banana,sabarkantha,SKIP,,,,only 1 months history (need 12)
+Banana,surat,SKIP,,,,no price cache
+Banana,surendranagar,OK,2395.6097823744885,2157.96,-10.45,
+Banana,tapi,SKIP,,,,no price cache
+Banana,thedangs,SKIP,,,,no price cache
+Banana,vadodara,OK,1837.5068161922381,2914.06,46.11,
+Banana,valsad,OK,1405.2539332621568,1467.87,4.36,
+Beans,ahmadabad,SKIP,,,,no price cache
+Beans,amreli,OK,4332.861111111111,8080.57,62.32,
+Beans,anand,OK,4491.344444444445,5778.16,25.19,
+Beans,aravalli,SKIP,,,,no price cache
+Beans,banaskantha,OK,2016.4747354497354,1950.21,-3.34,
+Beans,bharuch,SKIP,,,,no price cache
+Beans,bhavnagar,SKIP,,,,no price cache
+Beans,botad,SKIP,,,,no price cache
+Beans,chhotaudaipur,SKIP,,,,no price cache
+Beans,dahod,OK,3797.3055555555557,3343.4,-12.73,
+Beans,devbhumidwarka,SKIP,,,,no price cache
+Beans,gandhinagar,SKIP,,,,no price cache
+Beans,girsomnath,SKIP,,,,no price cache
+Beans,jamnagar,OK,7643.100937025937,5435.34,-34.09,
+Beans,junagadh,OK,5465.88888888889,5291.34,-3.25,
+Beans,kachchh,SKIP,,,,only 6 months history (need 12)
+Beans,kheda,SKIP,,,,no price cache
+Beans,mahesana,SKIP,,,,no price cache
+Beans,mahisagar,SKIP,,,,no price cache
+Beans,morbi,SKIP,,,,only 4 months history (need 12)
+Beans,narmada,SKIP,,,,no price cache
+Beans,navsari,SKIP,,,,no price cache
+Beans,panchmahals,OK,1377.6145833333333,2873.2,73.51,
+Beans,patan,SKIP,,,,no price cache
+Beans,porbandar,OK,8202.096428571427,6445.33,-24.1,
+Beans,rajkot,OK,7548.299229011728,4576.13,-50.05,
+Beans,sabarkantha,SKIP,,,,no price cache
+Beans,surat,OK,5030.82251556178,8312.19,50.21,
+Beans,surendranagar,SKIP,,,,only 2 months history (need 12)
+Beans,tapi,SKIP,,,,no price cache
+Beans,thedangs,SKIP,,,,no price cache
+Beans,vadodara,OK,5053.888888888889,9200.53,59.91,
+Beans,valsad,SKIP,,,,no price cache
+Beetroot,ahmadabad,OK,1677.9150432900433,3073.42,60.52,
+Beetroot,amreli,SKIP,,,,no price cache
+Beetroot,anand,OK,653.4853174603174,1299.58,68.75,
+Beetroot,aravalli,SKIP,,,,no price cache
+Beetroot,banaskantha,SKIP,,,,only 4 months history (need 12)
+Beetroot,bharuch,OK,2171.031746031746,1144.39,-64.03,
+Beetroot,bhavnagar,SKIP,,,,no price cache
+Beetroot,botad,SKIP,,,,only 11 months history (need 12)
+Beetroot,chhotaudaipur,SKIP,,,,no price cache
+Beetroot,dahod,SKIP,,,,no price cache
+Beetroot,devbhumidwarka,SKIP,,,,no price cache
+Beetroot,gandhinagar,SKIP,,,,only 1 months history (need 12)
+Beetroot,girsomnath,SKIP,,,,no price cache
+Beetroot,jamnagar,SKIP,,,,no price cache
+Beetroot,junagadh,SKIP,,,,no price cache
+Beetroot,kachchh,OK,1292.376775271512,2664.35,72.35,
+Beetroot,kheda,OK,1344.0255531505532,2449.79,60.03,
+Beetroot,mahesana,SKIP,,,,no price cache
+Beetroot,mahisagar,SKIP,,,,no price cache
+Beetroot,morbi,SKIP,,,,only 6 months history (need 12)
+Beetroot,narmada,SKIP,,,,no price cache
+Beetroot,navsari,SKIP,,,,no price cache
+Beetroot,panchmahals,SKIP,,,,no price cache
+Beetroot,patan,SKIP,,,,only 11 months history (need 12)
+Beetroot,porbandar,SKIP,,,,no price cache
+Beetroot,rajkot,SKIP,,,,no price cache
+Beetroot,sabarkantha,SKIP,,,,no price cache
+Beetroot,surat,OK,1760.9921536796537,3307.52,63.03,
+Beetroot,surendranagar,SKIP,,,,only 5 months history (need 12)
+Beetroot,tapi,SKIP,,,,no price cache
+Beetroot,thedangs,SKIP,,,,no price cache
+Beetroot,vadodara,OK,2135.864898989899,2965.66,32.82,
+Beetroot,valsad,SKIP,,,,no price cache
+Brinjal,ahmadabad,OK,2378.119227994228,3945.08,50.62,
+Brinjal,amreli,OK,2387.6062457912462,3601.0,41.09,
+Brinjal,anand,OK,2035.2949677064423,4019.16,68.04,
+Brinjal,aravalli,SKIP,,,,no price cache
+Brinjal,banaskantha,OK,2345.3439153439153,3311.19,34.49,
+Brinjal,bharuch,OK,2286.4592751820005,4032.3,56.73,
+Brinjal,bhavnagar,SKIP,,,,no price cache
+Brinjal,botad,OK,1017.0715728715728,1907.5,62.89,
+Brinjal,chhotaudaipur,SKIP,,,,no price cache
+Brinjal,dahod,OK,2158.9084295334296,3353.32,44.03,
+Brinjal,devbhumidwarka,SKIP,,,,no price cache
+Brinjal,gandhinagar,OK,1942.0411394161392,3287.16,52.63,
+Brinjal,girsomnath,OK,2656.9153439153442,4114.91,43.75,
+Brinjal,jamnagar,SKIP,,,,only 1 months history (need 12)
+Brinjal,junagadh,SKIP,,,,only 8 months history (need 12)
+Brinjal,kachchh,OK,1283.943972693973,3627.26,103.85,
+Brinjal,kheda,OK,1544.4125301346605,2861.27,61.66,
+Brinjal,mahesana,OK,1229.9526936026934,2332.47,64.0,
+Brinjal,mahisagar,SKIP,,,,no price cache
+Brinjal,morbi,OK,2442.9861111111113,3099.78,23.81,
+Brinjal,narmada,SKIP,,,,no price cache
+Brinjal,navsari,OK,2827.273082051329,3896.39,32.07,
+Brinjal,panchmahals,SKIP,,,,only 1 months history (need 12)
+Brinjal,patan,OK,1567.1570105820108,2936.63,62.8,
+Brinjal,porbandar,OK,2192.526605339105,3845.95,56.2,
+Brinjal,rajkot,OK,2169.8865668287103,4055.08,62.53,
+Brinjal,sabarkantha,OK,676.0162037037038,1314.19,66.48,
+Brinjal,surat,OK,2836.7918698135045,3609.17,24.08,
+Brinjal,surendranagar,OK,3033.718734968735,4037.51,28.58,
+Brinjal,tapi,SKIP,,,,no price cache
+Brinjal,thedangs,SKIP,,,,no price cache
+Brinjal,vadodara,OK,1891.7560248202667,3403.34,58.73,
+Brinjal,valsad,SKIP,,,,only 7 months history (need 12)
+Cabbage,ahmadabad,OK,1282.3984221152475,1396.76,8.54,
+Cabbage,amreli,OK,1637.6523425973865,3152.25,65.49,
+Cabbage,anand,OK,1117.6854959830625,2023.11,59.34,
+Cabbage,aravalli,SKIP,,,,no price cache
+Cabbage,banaskantha,OK,1576.8695269832313,2853.84,59.32,
+Cabbage,bharuch,OK,1132.881162444873,2108.41,62.12,
+Cabbage,bhavnagar,SKIP,,,,no price cache
+Cabbage,botad,OK,600.1238358499161,1157.91,65.72,
+Cabbage,chhotaudaipur,SKIP,,,,no price cache
+Cabbage,dahod,OK,1268.4720660945063,1274.79,0.5,
+Cabbage,devbhumidwarka,SKIP,,,,only 1 months history (need 12)
+Cabbage,gandhinagar,OK,1241.7209605878436,1740.14,33.75,
+Cabbage,girsomnath,OK,2014.0412551414875,4100.48,71.1,
+Cabbage,jamnagar,SKIP,,,,only 1 months history (need 12)
+Cabbage,junagadh,OK,1028.0859728506787,2107.31,71.77,
+Cabbage,kachchh,OK,24448.169934640526,27061.99,10.16,
+Cabbage,kheda,OK,1244.724282329835,2142.2,54.29,
+Cabbage,mahesana,OK,1311.10176585167,1582.74,18.83,
+Cabbage,mahisagar,SKIP,,,,no price cache
+Cabbage,morbi,OK,1264.2806794406497,1626.49,25.19,
+Cabbage,narmada,SKIP,,,,no price cache
+Cabbage,navsari,OK,1495.9149310200503,2785.52,62.17,
+Cabbage,panchmahals,SKIP,,,,only 4 months history (need 12)
+Cabbage,patan,OK,951.6039092987623,1174.32,21.03,
+Cabbage,porbandar,OK,1527.2314385899435,1501.18,-1.72,
+Cabbage,rajkot,OK,1334.467479871836,1310.12,-1.84,
+Cabbage,sabarkantha,OK,622.2662026111717,1136.97,60.28,
+Cabbage,surat,OK,1425.0756212831984,2881.31,70.4,
+Cabbage,surendranagar,OK,1537.3552284992845,1701.74,10.16,
+Cabbage,tapi,SKIP,,,,no price cache
+Cabbage,thedangs,SKIP,,,,no price cache
+Cabbage,vadodara,OK,1231.9502646512249,1768.4,36.15,
+Cabbage,valsad,SKIP,,,,only 1 months history (need 12)
+Capsicum,ahmadabad,OK,4028.614417989418,3228.39,-22.14,
+Capsicum,amreli,OK,2038.6237373737374,5486.92,99.01,
+Capsicum,anand,OK,830.7586466165415,2119.62,93.67,
+Capsicum,aravalli,SKIP,,,,no price cache
+Capsicum,banaskantha,SKIP,,,,no price cache
+Capsicum,bharuch,OK,2650.796506734007,2137.14,-21.54,
+Capsicum,bhavnagar,SKIP,,,,no price cache
+Capsicum,botad,SKIP,,,,no price cache
+Capsicum,chhotaudaipur,SKIP,,,,no price cache
+Capsicum,dahod,SKIP,,,,only 2 months history (need 12)
+Capsicum,devbhumidwarka,SKIP,,,,no price cache
+Capsicum,gandhinagar,SKIP,,,,no price cache
+Capsicum,girsomnath,SKIP,,,,only 4 months history (need 12)
+Capsicum,jamnagar,SKIP,,,,no price cache
+Capsicum,junagadh,SKIP,,,,no price cache
+Capsicum,kachchh,OK,2929.621848739496,5065.85,54.76,
+Capsicum,kheda,OK,1795.5574074074073,1894.85,5.38,
+Capsicum,mahesana,SKIP,,,,only 2 months history (need 12)
+Capsicum,mahisagar,SKIP,,,,no price cache
+Capsicum,morbi,OK,3908.6574074074074,2541.31,-43.05,
+Capsicum,narmada,SKIP,,,,no price cache
+Capsicum,navsari,OK,4115.245279146141,5973.27,37.26,
+Capsicum,panchmahals,SKIP,,,,no price cache
+Capsicum,patan,SKIP,,,,no price cache
+Capsicum,porbandar,SKIP,,,,no price cache
+Capsicum,rajkot,SKIP,,,,no price cache
+Capsicum,sabarkantha,SKIP,,,,no price cache
+Capsicum,surat,OK,3423.698412698412,5734.28,51.57,
+Capsicum,surendranagar,SKIP,,,,no price cache
+Capsicum,tapi,SKIP,,,,no price cache
+Capsicum,thedangs,SKIP,,,,no price cache
+Capsicum,vadodara,OK,4175.45701058201,6758.26,48.15,
+Capsicum,valsad,SKIP,,,,only 3 months history (need 12)
+Carrot,ahmadabad,OK,1955.772486772487,2216.42,12.51,
+Carrot,amreli,OK,1468.6818783068784,2968.52,70.37,
+Carrot,anand,OK,1330.718253968254,3007.41,81.54,
+Carrot,aravalli,SKIP,,,,no price cache
+Carrot,banaskantha,OK,1332.4963624338625,3325.18,91.45,
+Carrot,bharuch,OK,1868.1748982012139,4136.56,79.49,
+Carrot,bhavnagar,SKIP,,,,no price cache
+Carrot,botad,OK,414.3232323232324,886.14,76.02,
+Carrot,chhotaudaipur,SKIP,,,,no price cache
+Carrot,dahod,OK,2479.1309523809523,4695.94,63.88,
+Carrot,devbhumidwarka,SKIP,,,,no price cache
+Carrot,gandhinagar,OK,1436.4385383135382,2899.48,70.24,
+Carrot,girsomnath,OK,1625.6214646464646,3795.59,84.79,
+Carrot,jamnagar,SKIP,,,,no price cache
+Carrot,junagadh,SKIP,,,,only 6 months history (need 12)
+Carrot,kachchh,OK,1536.952380952381,3490.91,82.04,
+Carrot,kheda,OK,1354.6868987493988,2678.39,68.16,
+Carrot,mahesana,SKIP,,,,no price cache
+Carrot,mahisagar,SKIP,,,,no price cache
+Carrot,morbi,SKIP,,,,no price cache
+Carrot,narmada,SKIP,,,,no price cache
+Carrot,navsari,OK,1625.5968915343917,3212.82,68.13,
+Carrot,panchmahals,SKIP,,,,only 1 months history (need 12)
+Carrot,patan,OK,751.3426527176528,1553.73,72.66,
+Carrot,porbandar,SKIP,,,,no price cache
+Carrot,rajkot,OK,2213.5251322751324,2400.0,8.09,
+Carrot,sabarkantha,SKIP,,,,no price cache
+Carrot,surat,OK,1823.4865620490623,4208.59,83.64,
+Carrot,surendranagar,OK,2290.286495911496,4479.08,67.07,
+Carrot,tapi,SKIP,,,,no price cache
+Carrot,thedangs,SKIP,,,,no price cache
+Carrot,vadodara,OK,1975.2570947570946,4486.2,82.03,
+Carrot,valsad,SKIP,,,,no price cache
+Castor Seed,ahmadabad,OK,6150.116200003699,8499.67,32.36,
+Castor Seed,amreli,OK,5793.248154118735,8457.41,37.83,
+Castor Seed,anand,OK,4609.905555555555,7387.08,47.15,
+Castor Seed,aravalli,SKIP,,,,no price cache
+Castor Seed,banaskantha,OK,6251.903356200628,3450.75,-59.43,
+Castor Seed,bharuch,OK,5377.408622695387,4676.53,-13.97,
+Castor Seed,bhavnagar,OK,5537.554850193666,7118.7,25.12,
+Castor Seed,botad,OK,5492.9125,2548.05,-76.81,
+Castor Seed,chhotaudaipur,SKIP,,,,only 4 months history (need 12)
+Castor Seed,dahod,OK,5673.49246031746,3180.0,-57.89,
+Castor Seed,devbhumidwarka,OK,4392.680555555556,7885.02,58.5,
+Castor Seed,gandhinagar,OK,6203.500815227735,3146.12,-67.89,
+Castor Seed,girsomnath,OK,5638.666666666667,4928.8,-13.46,
+Castor Seed,jamnagar,OK,5925.1095808795035,2925.09,-70.59,
+Castor Seed,junagadh,OK,5576.247300384801,9271.52,50.84,
+Castor Seed,kachchh,OK,6169.118703187664,3364.41,-60.63,
+Castor Seed,kheda,OK,4484.249523809524,6945.69,43.76,
+Castor Seed,mahesana,OK,6290.509239063033,3575.56,-56.49,
+Castor Seed,mahisagar,SKIP,,,,no price cache
+Castor Seed,morbi,OK,6010.879166872143,10136.27,52.25,
+Castor Seed,narmada,SKIP,,,,only 3 months history (need 12)
+Castor Seed,navsari,SKIP,,,,no price cache
+Castor Seed,panchmahals,OK,5826.913888888889,4943.7,-16.44,
+Castor Seed,patan,OK,6278.221268118152,9666.94,43.16,
+Castor Seed,porbandar,OK,5382.916666666667,8595.37,46.8,
+Castor Seed,rajkot,OK,5935.7110092672665,3672.68,-48.01,
+Castor Seed,sabarkantha,OK,5792.950086918326,17175.95,108.69,
+Castor Seed,surat,OK,3390.367857142857,3408.05,0.52,
+Castor Seed,surendranagar,OK,6116.17549940084,10339.83,52.51,
+Castor Seed,tapi,SKIP,,,,no price cache
+Castor Seed,thedangs,SKIP,,,,no price cache
+Castor Seed,vadodara,OK,5141.533333333334,8962.88,55.57,
+Castor Seed,valsad,SKIP,,,,no price cache
+Cauliflower,ahmadabad,OK,2121.2614838864843,3938.82,61.89,
+Cauliflower,amreli,OK,2587.8667137862135,2307.36,-11.47,
+Cauliflower,anand,OK,2007.8230807540983,4954.68,90.33,
+Cauliflower,aravalli,SKIP,,,,no price cache
+Cauliflower,banaskantha,OK,2785.7961760461762,2153.21,-25.76,
+Cauliflower,bharuch,OK,2090.5582120165172,4052.82,66.2,
+Cauliflower,bhavnagar,SKIP,,,,no price cache
+Cauliflower,botad,OK,924.6036616161615,1465.75,46.08,
+Cauliflower,chhotaudaipur,SKIP,,,,no price cache
+Cauliflower,dahod,OK,2400.7469486531986,4262.04,57.4,
+Cauliflower,devbhumidwarka,SKIP,,,,no price cache
+Cauliflower,gandhinagar,OK,1885.9972446570746,4171.59,79.38,
+Cauliflower,girsomnath,OK,1775.8314333814337,3808.03,76.28,
+Cauliflower,jamnagar,SKIP,,,,no price cache
+Cauliflower,junagadh,SKIP,,,,only 6 months history (need 12)
+Cauliflower,kachchh,OK,1711.7301587301588,4403.34,94.49,
+Cauliflower,kheda,OK,1874.7904943612705,3963.3,74.86,
+Cauliflower,mahesana,OK,1863.2931986994483,3957.15,75.32,
+Cauliflower,mahisagar,SKIP,,,,no price cache
+Cauliflower,morbi,OK,2994.602332852333,4564.57,42.15,
+Cauliflower,narmada,SKIP,,,,no price cache
+Cauliflower,navsari,OK,2623.3533260510644,2251.37,-15.29,
+Cauliflower,panchmahals,SKIP,,,,only 2 months history (need 12)
+Cauliflower,patan,OK,1300.280753968254,3472.15,98.22,
+Cauliflower,porbandar,OK,3080.526695526695,5206.69,52.48,
+Cauliflower,rajkot,OK,2364.3230369167864,2330.22,-1.45,
+Cauliflower,sabarkantha,OK,979.53801934449,2972.83,111.02,
+Cauliflower,surat,OK,2517.681320993821,4361.93,54.96,
+Cauliflower,surendranagar,OK,3184.858886483887,3566.99,11.33,
+Cauliflower,tapi,SKIP,,,,no price cache
+Cauliflower,thedangs,SKIP,,,,no price cache
+Cauliflower,vadodara,OK,2073.558842655882,4370.7,74.57,
+Cauliflower,valsad,SKIP,,,,no price cache
+Chili Red,ahmadabad,SKIP,,,,no price cache
+Chili Red,amreli,OK,9769.429509511243,7773.73,-22.85,
+Chili Red,anand,SKIP,,,,no price cache
+Chili Red,aravalli,SKIP,,,,no price cache
+Chili Red,banaskantha,OK,3659.7638888888887,6881.76,63.15,
+Chili Red,bharuch,SKIP,,,,no price cache
+Chili Red,bhavnagar,SKIP,,,,only 2 months history (need 12)
+Chili Red,botad,SKIP,,,,no price cache
+Chili Red,chhotaudaipur,SKIP,,,,no price cache
+Chili Red,dahod,SKIP,,,,no price cache
+Chili Red,devbhumidwarka,SKIP,,,,only 7 months history (need 12)
+Chili Red,gandhinagar,SKIP,,,,no price cache
+Chili Red,girsomnath,SKIP,,,,no price cache
+Chili Red,jamnagar,OK,6065.7023928977815,9691.77,46.86,
+Chili Red,junagadh,SKIP,,,,no price cache
+Chili Red,kachchh,SKIP,,,,no price cache
+Chili Red,kheda,SKIP,,,,no price cache
+Chili Red,mahesana,SKIP,,,,no price cache
+Chili Red,mahisagar,SKIP,,,,no price cache
+Chili Red,morbi,SKIP,,,,no price cache
+Chili Red,narmada,SKIP,,,,no price cache
+Chili Red,navsari,SKIP,,,,no price cache
+Chili Red,panchmahals,SKIP,,,,no price cache
+Chili Red,patan,SKIP,,,,no price cache
+Chili Red,porbandar,OK,9044.384701631272,8459.22,-6.69,
+Chili Red,rajkot,OK,5523.179456466381,4530.07,-19.82,
+Chili Red,sabarkantha,SKIP,,,,no price cache
+Chili Red,surat,OK,2109.5685546071577,3750.69,57.55,
+Chili Red,surendranagar,SKIP,,,,no price cache
+Chili Red,tapi,SKIP,,,,no price cache
+Chili Red,thedangs,SKIP,,,,no price cache
+Chili Red,vadodara,SKIP,,,,only 3 months history (need 12)
+Chili Red,valsad,SKIP,,,,no price cache
+Colacasia,ahmadabad,OK,3861.863756613757,2868.42,-29.74,
+Colacasia,amreli,SKIP,,,,no price cache
+Colacasia,anand,SKIP,,,,no price cache
+Colacasia,aravalli,SKIP,,,,no price cache
+Colacasia,banaskantha,SKIP,,,,no price cache
+Colacasia,bharuch,SKIP,,,,no price cache
+Colacasia,bhavnagar,SKIP,,,,no price cache
+Colacasia,botad,SKIP,,,,no price cache
+Colacasia,chhotaudaipur,SKIP,,,,no price cache
+Colacasia,dahod,OK,2423.0641821946165,5427.04,80.64,
+Colacasia,devbhumidwarka,SKIP,,,,no price cache
+Colacasia,gandhinagar,SKIP,,,,no price cache
+Colacasia,girsomnath,SKIP,,,,only 1 months history (need 12)
+Colacasia,jamnagar,SKIP,,,,no price cache
+Colacasia,junagadh,SKIP,,,,no price cache
+Colacasia,kachchh,SKIP,,,,no price cache
+Colacasia,kheda,SKIP,,,,no price cache
+Colacasia,mahesana,SKIP,,,,no price cache
+Colacasia,mahisagar,SKIP,,,,no price cache
+Colacasia,morbi,SKIP,,,,no price cache
+Colacasia,narmada,SKIP,,,,no price cache
+Colacasia,navsari,SKIP,,,,no price cache
+Colacasia,panchmahals,SKIP,,,,no price cache
+Colacasia,patan,SKIP,,,,no price cache
+Colacasia,porbandar,SKIP,,,,no price cache
+Colacasia,rajkot,SKIP,,,,no price cache
+Colacasia,sabarkantha,SKIP,,,,no price cache
+Colacasia,surat,SKIP,,,,no price cache
+Colacasia,surendranagar,SKIP,,,,no price cache
+Colacasia,tapi,SKIP,,,,no price cache
+Colacasia,thedangs,SKIP,,,,no price cache
+Colacasia,vadodara,OK,3938.901090739325,2835.82,-32.86,
+Colacasia,valsad,SKIP,,,,no price cache
+Cotton,ahmadabad,OK,6887.387698412698,8619.3,22.43,
+Cotton,amreli,OK,6963.641667216663,5530.6,-23.04,
+Cotton,anand,SKIP,,,,only 1 months history (need 12)
+Cotton,aravalli,SKIP,,,,no price cache
+Cotton,banaskantha,OK,6975.656042568543,4822.4,-36.92,
+Cotton,bharuch,OK,6309.849954067833,10848.96,54.2,
+Cotton,bhavnagar,OK,6565.461064840957,4726.46,-32.86,
+Cotton,botad,OK,7122.0123015873005,6949.54,-2.45,
+Cotton,chhotaudaipur,OK,7290.948995593436,5710.67,-24.43,
+Cotton,dahod,OK,4422.819444444444,6240.13,34.42,
+Cotton,devbhumidwarka,OK,6758.777777777777,4786.5,-34.5,
+Cotton,gandhinagar,OK,7924.663888888889,6442.09,-20.71,
+Cotton,girsomnath,OK,7411.519444444444,10223.68,32.17,
+Cotton,jamnagar,OK,7105.56167520381,4353.57,-48.99,
+Cotton,junagadh,OK,7324.980935022617,9031.34,20.94,
+Cotton,kachchh,OK,7372.691111111111,13446.48,60.09,
+Cotton,kheda,OK,6612.1,5452.79,-19.28,
+Cotton,mahesana,OK,7116.946522470764,8755.06,20.72,
+Cotton,mahisagar,SKIP,,,,no price cache
+Cotton,morbi,OK,7131.254179995414,5315.13,-29.39,
+Cotton,narmada,OK,6882.044444444444,12109.39,56.51,
+Cotton,navsari,SKIP,,,,no price cache
+Cotton,panchmahals,OK,6972.5,5072.79,-31.81,
+Cotton,patan,OK,7135.97152048731,10803.91,41.48,
+Cotton,porbandar,SKIP,,,,only 2 months history (need 12)
+Cotton,rajkot,OK,7255.478184179612,10258.65,34.64,
+Cotton,sabarkantha,OK,7186.879707441489,6165.98,-15.32,
+Cotton,surat,OK,7090.08831890332,6610.32,-7.01,
+Cotton,surendranagar,OK,7026.902444170313,4607.84,-42.2,
+Cotton,tapi,SKIP,,,,no price cache
+Cotton,thedangs,SKIP,,,,no price cache
+Cotton,vadodara,OK,6300.838888888889,4857.38,-26.02,
+Cotton,valsad,SKIP,,,,no price cache
+Drumstick,ahmadabad,OK,5645.7580214261725,7841.03,32.85,
+Drumstick,amreli,SKIP,,,,no price cache
+Drumstick,anand,OK,3461.5484980276005,5851.85,52.5,
+Drumstick,aravalli,SKIP,,,,no price cache
+Drumstick,banaskantha,SKIP,,,,no price cache
+Drumstick,bharuch,OK,4554.835429004547,6745.56,39.27,
+Drumstick,bhavnagar,SKIP,,,,no price cache
+Drumstick,botad,OK,970.4196876893806,2613.2,99.06,
+Drumstick,chhotaudaipur,SKIP,,,,no price cache
+Drumstick,dahod,OK,6006.335630173362,8006.48,28.74,
+Drumstick,devbhumidwarka,SKIP,,,,no price cache
+Drumstick,gandhinagar,SKIP,,,,no price cache
+Drumstick,girsomnath,SKIP,,,,only 4 months history (need 12)
+Drumstick,jamnagar,SKIP,,,,no price cache
+Drumstick,junagadh,SKIP,,,,only 5 months history (need 12)
+Drumstick,kachchh,SKIP,,,,no price cache
+Drumstick,kheda,OK,1887.5683007080065,1909.61,1.16,
+Drumstick,mahesana,SKIP,,,,no price cache
+Drumstick,mahisagar,SKIP,,,,no price cache
+Drumstick,morbi,SKIP,,,,no price cache
+Drumstick,narmada,SKIP,,,,no price cache
+Drumstick,navsari,SKIP,,,,only 1 months history (need 12)
+Drumstick,panchmahals,SKIP,,,,no price cache
+Drumstick,patan,SKIP,,,,no price cache
+Drumstick,porbandar,SKIP,,,,no price cache
+Drumstick,rajkot,SKIP,,,,only 1 months history (need 12)
+Drumstick,sabarkantha,SKIP,,,,no price cache
+Drumstick,surat,OK,5159.481181851344,7507.52,37.51,
+Drumstick,surendranagar,OK,4673.3493183802775,6194.38,28.18,
+Drumstick,tapi,SKIP,,,,no price cache
+Drumstick,thedangs,SKIP,,,,no price cache
+Drumstick,vadodara,OK,4732.669567059476,6572.18,32.84,
+Drumstick,valsad,SKIP,,,,no price cache
+Dry Chillies,ahmadabad,SKIP,,,,no price cache
+Dry Chillies,amreli,SKIP,,,,no price cache
+Dry Chillies,anand,SKIP,,,,no price cache
+Dry Chillies,aravalli,SKIP,,,,no price cache
+Dry Chillies,banaskantha,SKIP,,,,no price cache
+Dry Chillies,bharuch,SKIP,,,,no price cache
+Dry Chillies,bhavnagar,SKIP,,,,no price cache
+Dry Chillies,botad,SKIP,,,,no price cache
+Dry Chillies,chhotaudaipur,SKIP,,,,no price cache
+Dry Chillies,dahod,OK,20635.14880952381,18397.41,-11.48,
+Dry Chillies,devbhumidwarka,SKIP,,,,only 1 months history (need 12)
+Dry Chillies,gandhinagar,SKIP,,,,no price cache
+Dry Chillies,girsomnath,SKIP,,,,no price cache
+Dry Chillies,jamnagar,OK,10227.741190476194,17268.43,52.38,
+Dry Chillies,junagadh,SKIP,,,,no price cache
+Dry Chillies,kachchh,SKIP,,,,no price cache
+Dry Chillies,kheda,SKIP,,,,no price cache
+Dry Chillies,mahesana,SKIP,,,,only 1 months history (need 12)
+Dry Chillies,mahisagar,SKIP,,,,no price cache
+Dry Chillies,morbi,SKIP,,,,no price cache
+Dry Chillies,narmada,SKIP,,,,no price cache
+Dry Chillies,navsari,SKIP,,,,no price cache
+Dry Chillies,panchmahals,SKIP,,,,no price cache
+Dry Chillies,patan,SKIP,,,,no price cache
+Dry Chillies,porbandar,SKIP,,,,no price cache
+Dry Chillies,rajkot,OK,13308.467915649166,13416.64,0.81,
+Dry Chillies,sabarkantha,SKIP,,,,no price cache
+Dry Chillies,surat,SKIP,,,,no price cache
+Dry Chillies,surendranagar,SKIP,,,,no price cache
+Dry Chillies,tapi,SKIP,,,,no price cache
+Dry Chillies,thedangs,SKIP,,,,no price cache
+Dry Chillies,vadodara,OK,9325.0,17011.18,60.12,
+Dry Chillies,valsad,SKIP,,,,no price cache
+Garlic,ahmadabad,SKIP,,,,no price cache
+Garlic,amreli,OK,3039.992063492063,4210.07,32.56,
+Garlic,anand,SKIP,,,,only 3 months history (need 12)
+Garlic,aravalli,SKIP,,,,no price cache
+Garlic,banaskantha,OK,3013.710738335738,4242.53,34.2,
+Garlic,bharuch,OK,7642.63888888889,5358.97,-35.5,
+Garlic,bhavnagar,OK,12461.25,8063.75,-43.52,
+Garlic,botad,OK,2155.5389826839823,3486.49,48.09,
+Garlic,chhotaudaipur,SKIP,,,,no price cache
+Garlic,dahod,OK,14439.443843193843,8717.82,-50.46,
+Garlic,devbhumidwarka,OK,2278.420068027211,3611.37,46.06,
+Garlic,gandhinagar,SKIP,,,,no price cache
+Garlic,girsomnath,SKIP,,,,only 1 months history (need 12)
+Garlic,jamnagar,OK,9796.730555555558,6111.12,-47.19,
+Garlic,junagadh,OK,8298.88484848485,5443.6,-42.17,
+Garlic,kachchh,SKIP,,,,only 1 months history (need 12)
+Garlic,kheda,OK,2630.140993265993,3136.66,17.61,
+Garlic,mahesana,SKIP,,,,no price cache
+Garlic,mahisagar,SKIP,,,,no price cache
+Garlic,morbi,SKIP,,,,no price cache
+Garlic,narmada,SKIP,,,,no price cache
+Garlic,navsari,SKIP,,,,only 8 months history (need 12)
+Garlic,panchmahals,SKIP,,,,no price cache
+Garlic,patan,SKIP,,,,only 2 months history (need 12)
+Garlic,porbandar,OK,13093.194444444443,8711.3,-40.75,
+Garlic,rajkot,OK,10038.718115771879,6902.94,-37.45,
+Garlic,sabarkantha,SKIP,,,,no price cache
+Garlic,surat,OK,3164.6924603174607,4948.93,44.71,
+Garlic,surendranagar,OK,14579.57671957672,9527.36,-42.55,
+Garlic,tapi,SKIP,,,,no price cache
+Garlic,thedangs,SKIP,,,,no price cache
+Garlic,vadodara,OK,6132.222222222222,10537.35,54.14,
+Garlic,valsad,SKIP,,,,no price cache
+Green Chilli,ahmadabad,OK,3425.7045512825453,5783.56,52.37,
+Green Chilli,amreli,OK,3007.0099309327,2573.88,-15.55,
+Green Chilli,anand,OK,3055.8614567464483,5457.28,57.99,
+Green Chilli,aravalli,SKIP,,,,no price cache
+Green Chilli,banaskantha,OK,3183.710729969631,5497.58,54.63,
+Green Chilli,bharuch,OK,2789.5400717602556,2683.76,-3.87,
+Green Chilli,bhavnagar,SKIP,,,,no price cache
+Green Chilli,botad,OK,1106.3867806159349,3095.88,102.9,
+Green Chilli,chhotaudaipur,SKIP,,,,no price cache
+Green Chilli,dahod,OK,3828.555319438597,3118.72,-20.51,
+Green Chilli,devbhumidwarka,SKIP,,,,only 2 months history (need 12)
+Green Chilli,gandhinagar,OK,3056.989037451397,2820.07,-8.07,
+Green Chilli,girsomnath,OK,3847.797415039406,6520.35,52.74,
+Green Chilli,jamnagar,SKIP,,,,no price cache
+Green Chilli,junagadh,OK,1337.5046932707753,4127.97,112.7,
+Green Chilli,kachchh,SKIP,,,,only 8 months history (need 12)
+Green Chilli,kheda,OK,668.2105129959909,2172.02,117.88,
+Green Chilli,mahesana,OK,2856.313954848462,2807.35,-1.73,
+Green Chilli,mahisagar,SKIP,,,,no price cache
+Green Chilli,morbi,OK,2950.1561246300944,5227.22,57.2,
+Green Chilli,narmada,SKIP,,,,no price cache
+Green Chilli,navsari,OK,4179.543436438746,3213.35,-26.29,
+Green Chilli,panchmahals,SKIP,,,,only 5 months history (need 12)
+Green Chilli,patan,OK,2713.463545962894,5248.7,65.98,
+Green Chilli,porbandar,OK,3485.41595585822,5601.59,47.45,
+Green Chilli,rajkot,OK,3097.938325766339,5883.91,64.15,
+Green Chilli,sabarkantha,OK,1574.7621583575135,4099.62,95.68,
+Green Chilli,surat,OK,3543.2716956416325,7203.93,70.96,
+Green Chilli,surendranagar,OK,3090.9970328699633,3210.53,3.79,
+Green Chilli,tapi,SKIP,,,,no price cache
+Green Chilli,thedangs,SKIP,,,,no price cache
+Green Chilli,vadodara,OK,3290.905765712153,5731.48,55.48,
+Green Chilli,valsad,OK,3192.240149075294,2897.59,-9.68,
+Green Peas,ahmadabad,SKIP,,,,no price cache
+Green Peas,amreli,SKIP,,,,no price cache
+Green Peas,anand,SKIP,,,,no price cache
+Green Peas,aravalli,SKIP,,,,no price cache
+Green Peas,banaskantha,SKIP,,,,only 1 months history (need 12)
+Green Peas,bharuch,SKIP,,,,no price cache
+Green Peas,bhavnagar,SKIP,,,,no price cache
+Green Peas,botad,SKIP,,,,no price cache
+Green Peas,chhotaudaipur,SKIP,,,,no price cache
+Green Peas,dahod,OK,3722.943121693121,2707.62,-31.84,
+Green Peas,devbhumidwarka,SKIP,,,,no price cache
+Green Peas,gandhinagar,SKIP,,,,only 2 months history (need 12)
+Green Peas,girsomnath,SKIP,,,,no price cache
+Green Peas,jamnagar,SKIP,,,,only 2 months history (need 12)
+Green Peas,junagadh,SKIP,,,,no price cache
+Green Peas,kachchh,SKIP,,,,no price cache
+Green Peas,kheda,OK,1154.1245103276353,2853.7,90.53,
+Green Peas,mahesana,SKIP,,,,only 1 months history (need 12)
+Green Peas,mahisagar,SKIP,,,,no price cache
+Green Peas,morbi,SKIP,,,,no price cache
+Green Peas,narmada,SKIP,,,,no price cache
+Green Peas,navsari,SKIP,,,,only 10 months history (need 12)
+Green Peas,panchmahals,SKIP,,,,no price cache
+Green Peas,patan,OK,4196.556165805137,3238.96,-25.9,
+Green Peas,porbandar,SKIP,,,,no price cache
+Green Peas,rajkot,SKIP,,,,no price cache
+Green Peas,sabarkantha,SKIP,,,,no price cache
+Green Peas,surat,SKIP,,,,no price cache
+Green Peas,surendranagar,SKIP,,,,no price cache
+Green Peas,tapi,SKIP,,,,no price cache
+Green Peas,thedangs,SKIP,,,,no price cache
+Green Peas,vadodara,SKIP,,,,only 4 months history (need 12)
+Green Peas,valsad,SKIP,,,,no price cache
+Ground Nut Seed,ahmadabad,SKIP,,,,no price cache
+Ground Nut Seed,amreli,OK,6935.354086239737,5545.48,-22.36,
+Ground Nut Seed,anand,SKIP,,,,no price cache
+Ground Nut Seed,aravalli,SKIP,,,,no price cache
+Ground Nut Seed,banaskantha,SKIP,,,,only 11 months history (need 12)
+Ground Nut Seed,bharuch,SKIP,,,,no price cache
+Ground Nut Seed,bhavnagar,SKIP,,,,no price cache
+Ground Nut Seed,botad,SKIP,,,,no price cache
+Ground Nut Seed,chhotaudaipur,SKIP,,,,no price cache
+Ground Nut Seed,dahod,SKIP,,,,only 1 months history (need 12)
+Ground Nut Seed,devbhumidwarka,OK,5524.417460317461,10815.84,67.18,
+Ground Nut Seed,gandhinagar,SKIP,,,,no price cache
+Ground Nut Seed,girsomnath,SKIP,,,,only 4 months history (need 12)
+Ground Nut Seed,jamnagar,OK,6834.334878171937,6655.0,-2.66,
+Ground Nut Seed,junagadh,OK,7101.353414786967,5554.95,-24.56,
+Ground Nut Seed,kachchh,SKIP,,,,no price cache
+Ground Nut Seed,kheda,SKIP,,,,no price cache
+Ground Nut Seed,mahesana,SKIP,,,,no price cache
+Ground Nut Seed,mahisagar,SKIP,,,,no price cache
+Ground Nut Seed,morbi,SKIP,,,,only 1 months history (need 12)
+Ground Nut Seed,narmada,SKIP,,,,no price cache
+Ground Nut Seed,navsari,SKIP,,,,no price cache
+Ground Nut Seed,panchmahals,SKIP,,,,no price cache
+Ground Nut Seed,patan,SKIP,,,,only 3 months history (need 12)
+Ground Nut Seed,porbandar,OK,6225.914935064935,5581.66,-10.92,
+Ground Nut Seed,rajkot,OK,4319.917344356651,3796.39,-12.92,
+Ground Nut Seed,sabarkantha,OK,3700.573717948718,6451.94,55.59,
+Ground Nut Seed,surat,SKIP,,,,only 1 months history (need 12)
+Ground Nut Seed,surendranagar,SKIP,,,,no price cache
+Ground Nut Seed,tapi,SKIP,,,,no price cache
+Ground Nut Seed,thedangs,SKIP,,,,only 2 months history (need 12)
+Ground Nut Seed,vadodara,OK,6343.743386243386,11233.12,57.14,
+Ground Nut Seed,valsad,SKIP,,,,no price cache
+Groundnut,ahmadabad,SKIP,,,,no price cache
+Groundnut,amreli,OK,5288.944534916549,9612.48,59.74,
+Groundnut,anand,OK,2598.77721661055,2372.29,-9.12,
+Groundnut,aravalli,SKIP,,,,no price cache
+Groundnut,banaskantha,OK,5722.149594555044,4854.13,-16.45,
+Groundnut,bharuch,SKIP,,,,only 3 months history (need 12)
+Groundnut,bhavnagar,OK,5721.481758576034,9949.82,55.33,
+Groundnut,botad,OK,4888.817724867724,4420.21,-10.08,
+Groundnut,chhotaudaipur,OK,4564.649040973646,8905.49,66.83,
+Groundnut,dahod,OK,5510.477777777777,4067.99,-30.35,
+Groundnut,devbhumidwarka,OK,5359.224717412217,5101.04,-4.94,
+Groundnut,gandhinagar,SKIP,,,,only 2 months history (need 12)
+Groundnut,girsomnath,OK,5572.139081462769,5376.8,-3.57,
+Groundnut,jamnagar,OK,5860.982046889101,9728.19,50.67,
+Groundnut,junagadh,OK,5427.289977458707,4865.18,-10.93,
+Groundnut,kachchh,OK,4978.251805555556,10067.65,70.42,
+Groundnut,kheda,SKIP,,,,only 6 months history (need 12)
+Groundnut,mahesana,OK,5600.225238095238,9887.81,56.85,
+Groundnut,mahisagar,SKIP,,,,no price cache
+Groundnut,morbi,OK,5484.302298606098,9663.09,56.64,
+Groundnut,narmada,SKIP,,,,no price cache
+Groundnut,navsari,SKIP,,,,only 6 months history (need 12)
+Groundnut,panchmahals,OK,3954.1329966329963,3838.3,-2.97,
+Groundnut,patan,OK,4797.047758825117,9584.29,69.21,
+Groundnut,porbandar,OK,5326.175144300143,4917.99,-7.97,
+Groundnut,rajkot,OK,5681.431876612624,5096.84,-10.86,
+Groundnut,sabarkantha,OK,6202.604313404814,10568.67,53.29,
+Groundnut,surat,OK,6368.90854679803,5597.39,-12.91,
+Groundnut,surendranagar,OK,4825.761355311354,9300.94,65.61,
+Groundnut,tapi,SKIP,,,,no price cache
+Groundnut,thedangs,SKIP,,,,no price cache
+Groundnut,vadodara,OK,4900.0,4299.47,-13.07,
+Groundnut,valsad,SKIP,,,,only 1 months history (need 12)
+Guar,ahmadabad,OK,6681.855612585118,10672.32,46.83,
+Guar,amreli,OK,4989.038702480477,3078.18,-48.29,
+Guar,anand,OK,4161.7948376545055,7670.29,61.14,
+Guar,aravalli,SKIP,,,,no price cache
+Guar,banaskantha,OK,5957.10825343713,9476.91,46.43,
+Guar,bharuch,OK,3503.1648228314893,5394.8,43.18,
+Guar,bhavnagar,SKIP,,,,only 1 months history (need 12)
+Guar,botad,OK,1863.4401207689928,4818.0,94.99,
+Guar,chhotaudaipur,SKIP,,,,no price cache
+Guar,dahod,SKIP,,,,only 3 months history (need 12)
+Guar,devbhumidwarka,SKIP,,,,only 1 months history (need 12)
+Guar,gandhinagar,OK,4931.5223488480815,3529.59,-33.45,
+Guar,girsomnath,OK,4780.351320219741,8455.3,57.03,
+Guar,jamnagar,OK,5823.173450360913,3503.61,-50.81,
+Guar,junagadh,OK,2110.098638595114,4502.03,75.78,
+Guar,kachchh,OK,3857.6761961322986,6468.14,51.68,
+Guar,kheda,OK,3372.7895098637746,2759.5,-20.07,
+Guar,mahesana,OK,3566.6828042328048,5839.93,49.31,
+Guar,mahisagar,SKIP,,,,no price cache
+Guar,morbi,OK,6344.606220573963,10090.62,46.4,
+Guar,narmada,SKIP,,,,no price cache
+Guar,navsari,OK,5215.874593868341,8684.18,50.98,
+Guar,panchmahals,SKIP,,,,only 6 months history (need 12)
+Guar,patan,OK,3628.034880599837,7561.57,73.44,
+Guar,porbandar,OK,6141.172415487339,10427.5,52.94,
+Guar,rajkot,OK,5872.6942341048525,10016.65,53.39,
+Guar,sabarkantha,OK,4426.685961954712,8242.72,62.17,
+Guar,surat,OK,5803.456077858359,10536.53,59.64,
+Guar,surendranagar,OK,7202.834929143272,11693.2,48.45,
+Guar,tapi,SKIP,,,,no price cache
+Guar,thedangs,SKIP,,,,no price cache
+Guar,vadodara,OK,4042.2158556863938,6884.75,53.25,
+Guar,valsad,SKIP,,,,only 2 months history (need 12)
+Guava,ahmadabad,OK,3750.8518518518517,7210.2,65.35,
+Guava,amreli,SKIP,,,,no price cache
+Guava,anand,SKIP,,,,no price cache
+Guava,aravalli,SKIP,,,,no price cache
+Guava,banaskantha,OK,3460.9722222222217,6165.03,57.73,
+Guava,bharuch,OK,1818.888888888889,2461.91,30.27,
+Guava,bhavnagar,SKIP,,,,no price cache
+Guava,botad,SKIP,,,,no price cache
+Guava,chhotaudaipur,SKIP,,,,no price cache
+Guava,dahod,SKIP,,,,only 4 months history (need 12)
+Guava,devbhumidwarka,SKIP,,,,no price cache
+Guava,gandhinagar,OK,777.3611111111112,1728.78,79.93,
+Guava,girsomnath,SKIP,,,,only 4 months history (need 12)
+Guava,jamnagar,SKIP,,,,no price cache
+Guava,junagadh,SKIP,,,,only 10 months history (need 12)
+Guava,kachchh,OK,1858.0246913580247,4233.53,82.35,
+Guava,kheda,SKIP,,,,no price cache
+Guava,mahesana,OK,2355.1388888888887,1993.0,-16.7,
+Guava,mahisagar,SKIP,,,,no price cache
+Guava,morbi,SKIP,,,,no price cache
+Guava,narmada,SKIP,,,,no price cache
+Guava,navsari,OK,2696.4285714285716,2798.81,3.73,
+Guava,panchmahals,SKIP,,,,no price cache
+Guava,patan,SKIP,,,,no price cache
+Guava,porbandar,OK,4167.5,5919.82,35.1,
+Guava,rajkot,OK,3351.9166666666665,2725.05,-20.7,
+Guava,sabarkantha,SKIP,,,,no price cache
+Guava,surat,SKIP,,,,no price cache
+Guava,surendranagar,OK,2651.6666666666665,1874.87,-34.67,
+Guava,tapi,SKIP,,,,no price cache
+Guava,thedangs,SKIP,,,,no price cache
+Guava,vadodara,OK,3470.1388888888896,6550.37,63.53,
+Guava,valsad,SKIP,,,,no price cache
+Leafy Vegetable,ahmadabad,SKIP,,,,no price cache
+Leafy Vegetable,amreli,SKIP,,,,only 2 months history (need 12)
+Leafy Vegetable,anand,SKIP,,,,only 8 months history (need 12)
+Leafy Vegetable,aravalli,SKIP,,,,no price cache
+Leafy Vegetable,banaskantha,SKIP,,,,no price cache
+Leafy Vegetable,bharuch,SKIP,,,,no price cache
+Leafy Vegetable,bhavnagar,SKIP,,,,no price cache
+Leafy Vegetable,botad,SKIP,,,,no price cache
+Leafy Vegetable,chhotaudaipur,SKIP,,,,no price cache
+Leafy Vegetable,dahod,SKIP,,,,no price cache
+Leafy Vegetable,devbhumidwarka,SKIP,,,,no price cache
+Leafy Vegetable,gandhinagar,SKIP,,,,only 1 months history (need 12)
+Leafy Vegetable,girsomnath,SKIP,,,,no price cache
+Leafy Vegetable,jamnagar,SKIP,,,,no price cache
+Leafy Vegetable,junagadh,SKIP,,,,no price cache
+Leafy Vegetable,kachchh,SKIP,,,,no price cache
+Leafy Vegetable,kheda,SKIP,,,,only 6 months history (need 12)
+Leafy Vegetable,mahesana,SKIP,,,,no price cache
+Leafy Vegetable,mahisagar,SKIP,,,,no price cache
+Leafy Vegetable,morbi,SKIP,,,,no price cache
+Leafy Vegetable,narmada,SKIP,,,,no price cache
+Leafy Vegetable,navsari,SKIP,,,,no price cache
+Leafy Vegetable,panchmahals,SKIP,,,,no price cache
+Leafy Vegetable,patan,SKIP,,,,no price cache
+Leafy Vegetable,porbandar,SKIP,,,,no price cache
+Leafy Vegetable,rajkot,SKIP,,,,no price cache
+Leafy Vegetable,sabarkantha,SKIP,,,,no price cache
+Leafy Vegetable,surat,SKIP,,,,no price cache
+Leafy Vegetable,surendranagar,SKIP,,,,no price cache
+Leafy Vegetable,tapi,SKIP,,,,no price cache
+Leafy Vegetable,thedangs,SKIP,,,,no price cache
+Leafy Vegetable,vadodara,OK,3675.2124873583207,2922.82,-22.91,
+Leafy Vegetable,valsad,SKIP,,,,no price cache
+Maize,ahmadabad,OK,1002.5210437710437,1860.76,61.85,
+Maize,amreli,OK,2413.0494192844194,1691.52,-35.53,
+Maize,anand,SKIP,,,,only 4 months history (need 12)
+Maize,aravalli,SKIP,,,,no price cache
+Maize,banaskantha,OK,2285.8705555555557,3511.1,42.92,
+Maize,bharuch,OK,2021.0917557388145,3733.11,61.36,
+Maize,bhavnagar,OK,2248.535714285714,3776.25,51.85,
+Maize,botad,OK,872.14,2515.57,105.93,
+Maize,chhotaudaipur,OK,2167.1221801346805,1879.73,-14.23,
+Maize,dahod,OK,2307.0418449179724,3507.18,41.88,
+Maize,devbhumidwarka,OK,1214.1666666666667,2918.16,87.69,
+Maize,gandhinagar,OK,1268.7776681053151,1236.27,-2.6,
+Maize,girsomnath,SKIP,,,,only 10 months history (need 12)
+Maize,jamnagar,OK,2043.3166666666666,2291.87,11.48,
+Maize,junagadh,OK,2221.9722222222217,3576.47,47.6,
+Maize,kachchh,SKIP,,,,no price cache
+Maize,kheda,OK,1487.9166666666667,3304.89,79.8,
+Maize,mahesana,OK,1427.288888888889,1784.67,22.35,
+Maize,mahisagar,SKIP,,,,no price cache
+Maize,morbi,OK,1366.3972222222221,4122.79,110.44,
+Maize,narmada,SKIP,,,,only 1 months history (need 12)
+Maize,navsari,SKIP,,,,no price cache
+Maize,panchmahals,OK,2339.7576409065464,3396.67,37.27,
+Maize,patan,SKIP,,,,no price cache
+Maize,porbandar,OK,1546.8939393939397,3974.16,94.36,
+Maize,rajkot,OK,2151.2323466158027,4376.52,71.02,
+Maize,sabarkantha,OK,2213.3301479238153,1716.37,-25.43,
+Maize,surat,OK,1993.6900777000776,1862.5,-6.81,
+Maize,surendranagar,OK,1494.0222222222224,1381.05,-7.86,
+Maize,tapi,SKIP,,,,no price cache
+Maize,thedangs,SKIP,,,,no price cache
+Maize,vadodara,OK,2346.9814814814813,2086.69,-11.76,
+Maize,valsad,SKIP,,,,no price cache
+Mango,ahmadabad,OK,7303.25,9865.69,30.07,
+Mango,amreli,OK,2661.6666666666665,5075.4,64.55,
+Mango,anand,OK,977.5,2201.54,81.19,
+Mango,aravalli,SKIP,,,,no price cache
+Mango,banaskantha,OK,7210.555555555557,10023.65,32.94,
+Mango,bharuch,OK,4100.277777777778,3833.49,-6.73,
+Mango,bhavnagar,SKIP,,,,no price cache
+Mango,botad,SKIP,,,,no price cache
+Mango,chhotaudaipur,SKIP,,,,no price cache
+Mango,dahod,OK,2823.4603174603176,5673.57,69.79,
+Mango,devbhumidwarka,SKIP,,,,no price cache
+Mango,gandhinagar,OK,2833.3333333333335,2704.19,-4.67,
+Mango,girsomnath,OK,6016.666666666667,4114.74,-38.0,
+Mango,jamnagar,SKIP,,,,no price cache
+Mango,junagadh,OK,1998.0416666666665,3942.76,67.97,
+Mango,kachchh,OK,6042.307692307692,5481.25,-9.75,
+Mango,kheda,OK,1730.2777777777776,1524.04,-12.69,
+Mango,mahesana,OK,3071.027777777778,3260.34,5.98,
+Mango,mahisagar,SKIP,,,,no price cache
+Mango,morbi,SKIP,,,,no price cache
+Mango,narmada,SKIP,,,,no price cache
+Mango,navsari,OK,6930.1,5327.04,-26.31,
+Mango,panchmahals,SKIP,,,,no price cache
+Mango,patan,SKIP,,,,no price cache
+Mango,porbandar,OK,7797.2222222222235,6396.73,-19.8,
+Mango,rajkot,OK,5886.944444444443,9887.11,51.85,
+Mango,sabarkantha,SKIP,,,,no price cache
+Mango,surat,OK,3605.0,6631.43,60.95,
+Mango,surendranagar,OK,7647.222222222223,5728.8,-28.88,
+Mango,tapi,SKIP,,,,no price cache
+Mango,thedangs,SKIP,,,,no price cache
+Mango,vadodara,OK,5472.871693121692,3701.55,-39.11,
+Mango,valsad,OK,4157.96681096681,3891.6,-6.62,
+Methi Seeds,ahmadabad,SKIP,,,,only 5 months history (need 12)
+Methi Seeds,amreli,OK,4993.896265649269,3352.65,-39.85,
+Methi Seeds,anand,SKIP,,,,only 5 months history (need 12)
+Methi Seeds,aravalli,SKIP,,,,no price cache
+Methi Seeds,banaskantha,OK,5393.139947089947,3618.6,-39.9,
+Methi Seeds,bharuch,SKIP,,,,no price cache
+Methi Seeds,bhavnagar,OK,5003.281547619048,3319.03,-41.04,
+Methi Seeds,botad,OK,4738.977783790284,3562.68,-28.53,
+Methi Seeds,chhotaudaipur,SKIP,,,,no price cache
+Methi Seeds,dahod,SKIP,,,,only 2 months history (need 12)
+Methi Seeds,devbhumidwarka,OK,4534.55753968254,8537.54,63.27,
+Methi Seeds,gandhinagar,SKIP,,,,only 5 months history (need 12)
+Methi Seeds,girsomnath,OK,4988.4516178266185,4272.62,-15.49,
+Methi Seeds,jamnagar,OK,5126.28387461223,4876.89,-4.99,
+Methi Seeds,junagadh,OK,4583.04861111111,3416.18,-29.38,
+Methi Seeds,kachchh,SKIP,,,,only 4 months history (need 12)
+Methi Seeds,kheda,SKIP,,,,no price cache
+Methi Seeds,mahesana,OK,5344.1357900432895,4588.74,-15.24,
+Methi Seeds,mahisagar,SKIP,,,,no price cache
+Methi Seeds,morbi,OK,5352.262896825398,4194.92,-24.36,
+Methi Seeds,narmada,SKIP,,,,no price cache
+Methi Seeds,navsari,SKIP,,,,no price cache
+Methi Seeds,panchmahals,SKIP,,,,no price cache
+Methi Seeds,patan,OK,4924.239859712551,4217.44,-15.49,
+Methi Seeds,porbandar,SKIP,,,,only 8 months history (need 12)
+Methi Seeds,rajkot,OK,5304.519631252634,4400.63,-18.68,
+Methi Seeds,sabarkantha,OK,2773.7976190476193,6347.91,82.79,
+Methi Seeds,surat,SKIP,,,,no price cache
+Methi Seeds,surendranagar,OK,4061.15,8020.17,68.05,
+Methi Seeds,tapi,SKIP,,,,no price cache
+Methi Seeds,thedangs,SKIP,,,,no price cache
+Methi Seeds,vadodara,OK,5015.555555555556,9513.7,64.02,
+Methi Seeds,valsad,SKIP,,,,no price cache
+Moath Dal,ahmadabad,OK,3495.8364285714283,6901.77,68.02,
+Moath Dal,amreli,OK,5925.384604099603,10589.49,58.06,
+Moath Dal,anand,SKIP,,,,only 3 months history (need 12)
+Moath Dal,aravalli,SKIP,,,,no price cache
+Moath Dal,banaskantha,OK,3623.044068085146,9676.84,98.24,
+Moath Dal,bharuch,SKIP,,,,only 4 months history (need 12)
+Moath Dal,bhavnagar,OK,4547.993055555557,3749.21,-19.31,
+Moath Dal,botad,OK,2759.8444444444444,3186.43,14.37,
+Moath Dal,chhotaudaipur,SKIP,,,,no price cache
+Moath Dal,dahod,SKIP,,,,no price cache
+Moath Dal,devbhumidwarka,SKIP,,,,only 1 months history (need 12)
+Moath Dal,gandhinagar,OK,2949.7731976371297,6625.85,80.92,
+Moath Dal,girsomnath,OK,3365.042091836735,8726.48,95.29,
+Moath Dal,jamnagar,OK,3589.475726495727,6573.23,60.5,
+Moath Dal,junagadh,OK,3386.4111111111115,7829.72,83.82,
+Moath Dal,kachchh,OK,4253.38683020683,10656.06,91.84,
+Moath Dal,kheda,SKIP,,,,only 1 months history (need 12)
+Moath Dal,mahesana,OK,7740.400493025493,6639.6,-15.34,
+Moath Dal,mahisagar,SKIP,,,,no price cache
+Moath Dal,morbi,OK,4301.087426900584,8210.57,64.66,
+Moath Dal,narmada,SKIP,,,,no price cache
+Moath Dal,navsari,SKIP,,,,no price cache
+Moath Dal,panchmahals,SKIP,,,,no price cache
+Moath Dal,patan,OK,3693.755583387201,8117.13,78.73,
+Moath Dal,porbandar,SKIP,,,,no price cache
+Moath Dal,rajkot,OK,3776.6327320827318,9342.82,90.58,
+Moath Dal,sabarkantha,OK,2658.5134920634914,7986.24,110.0,
+Moath Dal,surat,OK,3619.3623015873018,9316.47,94.55,
+Moath Dal,surendranagar,OK,4229.416666666667,9059.78,76.18,
+Moath Dal,tapi,SKIP,,,,no price cache
+Moath Dal,thedangs,SKIP,,,,no price cache
+Moath Dal,vadodara,OK,4850.0,11017.04,82.05,
+Moath Dal,valsad,SKIP,,,,no price cache
+Mustard,ahmadabad,OK,4202.835185185185,8492.88,70.35,
+Mustard,amreli,OK,5672.18426948052,9901.08,55.71,
+Mustard,anand,OK,3814.071246498599,8077.9,75.04,
+Mustard,aravalli,SKIP,,,,no price cache
+Mustard,banaskantha,OK,5546.943701175076,10197.08,60.89,
+Mustard,bharuch,SKIP,,,,no price cache
+Mustard,bhavnagar,OK,4427.61111111111,9187.75,73.0,
+Mustard,botad,OK,5868.503174603175,10230.71,55.58,
+Mustard,chhotaudaipur,SKIP,,,,no price cache
+Mustard,dahod,OK,3955.2222222222217,8049.69,71.06,
+Mustard,devbhumidwarka,OK,4106.956547619048,9058.35,79.1,
+Mustard,gandhinagar,OK,5254.351147123573,10171.84,66.06,
+Mustard,girsomnath,OK,4753.892538480038,9251.03,66.58,
+Mustard,jamnagar,OK,5589.07136724278,10118.0,59.35,
+Mustard,junagadh,OK,5170.924074074073,9930.15,65.25,
+Mustard,kachchh,OK,5033.50227854991,10130.46,69.94,
+Mustard,kheda,OK,2716.642495392751,6582.48,88.5,
+Mustard,mahesana,OK,5507.135820605957,9626.74,55.85,
+Mustard,mahisagar,SKIP,,,,no price cache
+Mustard,morbi,OK,5944.579558404558,10462.27,56.53,
+Mustard,narmada,SKIP,,,,only 1 months history (need 12)
+Mustard,navsari,SKIP,,,,no price cache
+Mustard,panchmahals,SKIP,,,,only 1 months history (need 12)
+Mustard,patan,OK,5486.224985051411,10296.18,62.95,
+Mustard,porbandar,SKIP,,,,no price cache
+Mustard,rajkot,OK,5443.025671335372,9489.38,55.58,
+Mustard,sabarkantha,OK,4962.331882012967,9069.75,60.31,
+Mustard,surat,SKIP,,,,only 9 months history (need 12)
+Mustard,surendranagar,OK,5451.784062049062,9761.74,58.25,
+Mustard,tapi,SKIP,,,,no price cache
+Mustard,thedangs,SKIP,,,,no price cache
+Mustard,vadodara,SKIP,,,,only 2 months history (need 12)
+Mustard,valsad,SKIP,,,,no price cache
+Onion,ahmadabad,OK,2108.644721019721,3337.58,45.92,
+Onion,amreli,OK,817.5,1083.08,28.13,
+Onion,anand,OK,2002.1601136544054,1415.02,-34.71,
+Onion,aravalli,SKIP,,,,no price cache
+Onion,banaskantha,OK,1913.1600529100529,2568.13,29.44,
+Onion,bharuch,OK,1651.847498362204,3197.8,66.06,
+Onion,bhavnagar,OK,1302.8557580113384,1922.05,38.88,
+Onion,botad,OK,788.4334114959114,1372.68,55.45,
+Onion,chhotaudaipur,SKIP,,,,no price cache
+Onion,dahod,OK,1705.3250453250453,2020.71,16.97,
+Onion,devbhumidwarka,SKIP,,,,no price cache
+Onion,gandhinagar,OK,673.5527777777777,1589.43,85.86,
+Onion,girsomnath,OK,816.1458333333334,1510.65,61.57,
+Onion,jamnagar,OK,1205.8940343915344,3042.47,92.54,
+Onion,junagadh,OK,809.4435846560846,1906.0,85.64,
+Onion,kachchh,OK,2254.410774410774,2266.04,0.51,
+Onion,kheda,OK,1763.709224068415,1388.85,-23.89,
+Onion,mahesana,OK,1672.5543530543534,1455.27,-13.92,
+Onion,mahisagar,SKIP,,,,no price cache
+Onion,morbi,OK,1290.0788840788841,1835.96,35.29,
+Onion,narmada,SKIP,,,,no price cache
+Onion,navsari,OK,1963.1739001739002,1822.31,-7.45,
+Onion,panchmahals,SKIP,,,,only 11 months history (need 12)
+Onion,patan,OK,1601.9444444444446,2926.18,60.25,
+Onion,porbandar,OK,1693.0144901394901,2248.19,28.36,
+Onion,rajkot,OK,1244.436173063435,1948.14,44.82,
+Onion,sabarkantha,SKIP,,,,only 11 months history (need 12)
+Onion,surat,OK,1710.7034632034631,1397.21,-20.24,
+Onion,surendranagar,OK,2030.5555555555554,3146.05,43.78,
+Onion,tapi,SKIP,,,,no price cache
+Onion,thedangs,SKIP,,,,no price cache
+Onion,vadodara,OK,1998.3231195762157,2147.07,7.18,
+Onion,valsad,SKIP,,,,no price cache
+Onion Green,ahmadabad,OK,2114.738035113035,1551.38,-30.98,
+Onion Green,amreli,OK,523.1379569504569,697.99,28.84,
+Onion Green,anand,OK,592.6357864357864,1649.37,102.36,
+Onion Green,aravalli,SKIP,,,,no price cache
+Onion Green,banaskantha,OK,1873.6772486772488,1404.79,-28.8,
+Onion Green,bharuch,OK,2916.993265993266,2172.07,-29.49,
+Onion Green,bhavnagar,SKIP,,,,no price cache
+Onion Green,botad,OK,513.265361952862,824.1,47.35,
+Onion Green,chhotaudaipur,SKIP,,,,no price cache
+Onion Green,dahod,OK,2498.8230369167873,2298.61,-8.35,
+Onion Green,devbhumidwarka,SKIP,,,,no price cache
+Onion Green,gandhinagar,OK,1543.1288999742947,1227.77,-22.86,
+Onion Green,girsomnath,OK,1501.596632996633,3926.06,96.11,
+Onion Green,jamnagar,SKIP,,,,only 1 months history (need 12)
+Onion Green,junagadh,SKIP,,,,only 2 months history (need 12)
+Onion Green,kachchh,SKIP,,,,no price cache
+Onion Green,kheda,OK,1031.329418523863,1760.06,53.45,
+Onion Green,mahesana,SKIP,,,,only 2 months history (need 12)
+Onion Green,mahisagar,SKIP,,,,no price cache
+Onion Green,morbi,SKIP,,,,only 10 months history (need 12)
+Onion Green,narmada,SKIP,,,,no price cache
+Onion Green,navsari,SKIP,,,,no price cache
+Onion Green,panchmahals,SKIP,,,,no price cache
+Onion Green,patan,OK,1096.0833333333333,1119.39,2.1,
+Onion Green,porbandar,SKIP,,,,only 2 months history (need 12)
+Onion Green,rajkot,SKIP,,,,no price cache
+Onion Green,sabarkantha,SKIP,,,,only 2 months history (need 12)
+Onion Green,surat,SKIP,,,,no price cache
+Onion Green,surendranagar,OK,2089.5367364117365,2373.41,12.74,
+Onion Green,tapi,SKIP,,,,no price cache
+Onion Green,thedangs,SKIP,,,,no price cache
+Onion Green,vadodara,OK,3120.55778018278,2802.87,-10.74,
+Onion Green,valsad,SKIP,,,,no price cache
+Orange,ahmadabad,OK,5553.131259297634,3894.16,-35.49,
+Orange,amreli,SKIP,,,,only 2 months history (need 12)
+Orange,anand,SKIP,,,,no price cache
+Orange,aravalli,SKIP,,,,no price cache
+Orange,banaskantha,OK,6370.916803415023,5398.29,-16.57,
+Orange,bharuch,OK,2206.4294916034046,4958.13,80.97,
+Orange,bhavnagar,SKIP,,,,no price cache
+Orange,botad,SKIP,,,,no price cache
+Orange,chhotaudaipur,SKIP,,,,no price cache
+Orange,dahod,SKIP,,,,no price cache
+Orange,devbhumidwarka,SKIP,,,,no price cache
+Orange,gandhinagar,SKIP,,,,no price cache
+Orange,girsomnath,SKIP,,,,only 4 months history (need 12)
+Orange,jamnagar,SKIP,,,,no price cache
+Orange,junagadh,SKIP,,,,only 7 months history (need 12)
+Orange,kachchh,SKIP,,,,no price cache
+Orange,kheda,SKIP,,,,no price cache
+Orange,mahesana,SKIP,,,,no price cache
+Orange,mahisagar,SKIP,,,,no price cache
+Orange,morbi,SKIP,,,,no price cache
+Orange,narmada,SKIP,,,,no price cache
+Orange,navsari,SKIP,,,,only 3 months history (need 12)
+Orange,panchmahals,SKIP,,,,no price cache
+Orange,patan,SKIP,,,,no price cache
+Orange,porbandar,OK,6564.576124659119,5424.03,-19.08,
+Orange,rajkot,OK,4975.389315241289,8538.76,54.01,
+Orange,sabarkantha,SKIP,,,,no price cache
+Orange,surat,SKIP,,,,no price cache
+Orange,surendranagar,SKIP,,,,no price cache
+Orange,tapi,SKIP,,,,no price cache
+Orange,thedangs,SKIP,,,,no price cache
+Orange,vadodara,OK,3239.074382243431,7586.23,85.1,
+Orange,valsad,SKIP,,,,no price cache
+Papaya,ahmadabad,OK,1917.2737355237355,4177.55,77.88,
+Papaya,amreli,OK,558.8888888888888,1190.63,75.63,
+Papaya,anand,SKIP,,,,no price cache
+Papaya,aravalli,SKIP,,,,no price cache
+Papaya,banaskantha,OK,2606.172468734969,2157.91,-18.87,
+Papaya,bharuch,OK,1121.6724987974987,1965.16,56.08,
+Papaya,bhavnagar,SKIP,,,,no price cache
+Papaya,botad,SKIP,,,,no price cache
+Papaya,chhotaudaipur,SKIP,,,,no price cache
+Papaya,dahod,SKIP,,,,no price cache
+Papaya,devbhumidwarka,SKIP,,,,no price cache
+Papaya,gandhinagar,SKIP,,,,only 5 months history (need 12)
+Papaya,girsomnath,SKIP,,,,only 3 months history (need 12)
+Papaya,jamnagar,SKIP,,,,no price cache
+Papaya,junagadh,SKIP,,,,only 3 months history (need 12)
+Papaya,kachchh,SKIP,,,,only 4 months history (need 12)
+Papaya,kheda,SKIP,,,,no price cache
+Papaya,mahesana,SKIP,,,,only 1 months history (need 12)
+Papaya,mahisagar,SKIP,,,,no price cache
+Papaya,morbi,SKIP,,,,no price cache
+Papaya,narmada,SKIP,,,,no price cache
+Papaya,navsari,SKIP,,,,only 2 months history (need 12)
+Papaya,panchmahals,SKIP,,,,no price cache
+Papaya,patan,SKIP,,,,no price cache
+Papaya,porbandar,OK,2653.9384920634916,2423.83,-9.07,
+Papaya,rajkot,OK,1476.9443542568542,1722.89,15.4,
+Papaya,sabarkantha,SKIP,,,,no price cache
+Papaya,surat,SKIP,,,,no price cache
+Papaya,surendranagar,OK,1146.3313328086053,2726.49,86.64,
+Papaya,tapi,SKIP,,,,no price cache
+Papaya,thedangs,SKIP,,,,no price cache
+Papaya,vadodara,OK,2075.5079365079364,4692.82,81.58,
+Papaya,valsad,SKIP,,,,no price cache
+Peas Wet,ahmadabad,OK,8107.220095938446,9153.1,12.13,
+Peas Wet,amreli,OK,3903.4680658393895,3725.17,-4.68,
+Peas Wet,anand,OK,2713.035761678409,2913.79,7.14,
+Peas Wet,aravalli,SKIP,,,,no price cache
+Peas Wet,banaskantha,SKIP,,,,only 9 months history (need 12)
+Peas Wet,bharuch,SKIP,,,,only 9 months history (need 12)
+Peas Wet,bhavnagar,SKIP,,,,no price cache
+Peas Wet,botad,SKIP,,,,no price cache
+Peas Wet,chhotaudaipur,SKIP,,,,no price cache
+Peas Wet,dahod,SKIP,,,,no price cache
+Peas Wet,devbhumidwarka,SKIP,,,,no price cache
+Peas Wet,gandhinagar,SKIP,,,,only 3 months history (need 12)
+Peas Wet,girsomnath,SKIP,,,,only 8 months history (need 12)
+Peas Wet,jamnagar,SKIP,,,,no price cache
+Peas Wet,junagadh,SKIP,,,,no price cache
+Peas Wet,kachchh,SKIP,,,,no price cache
+Peas Wet,kheda,SKIP,,,,no price cache
+Peas Wet,mahesana,SKIP,,,,no price cache
+Peas Wet,mahisagar,SKIP,,,,no price cache
+Peas Wet,morbi,SKIP,,,,no price cache
+Peas Wet,narmada,SKIP,,,,no price cache
+Peas Wet,navsari,OK,4277.324354395521,4936.73,14.34,
+Peas Wet,panchmahals,SKIP,,,,no price cache
+Peas Wet,patan,OK,3905.0016534391534,3636.63,-7.12,
+Peas Wet,porbandar,SKIP,,,,no price cache
+Peas Wet,rajkot,SKIP,,,,no price cache
+Peas Wet,sabarkantha,SKIP,,,,no price cache
+Peas Wet,surat,SKIP,,,,no price cache
+Peas Wet,surendranagar,OK,8269.296730960818,12322.49,39.89,
+Peas Wet,tapi,SKIP,,,,no price cache
+Peas Wet,thedangs,SKIP,,,,no price cache
+Peas Wet,vadodara,OK,8355.726252233606,12358.19,39.14,
+Peas Wet,valsad,SKIP,,,,no price cache
+Pomegranate,ahmadabad,OK,5144.684764309765,8447.31,49.59,
+Pomegranate,amreli,SKIP,,,,no price cache
+Pomegranate,anand,SKIP,,,,no price cache
+Pomegranate,aravalli,SKIP,,,,no price cache
+Pomegranate,banaskantha,OK,11539.017857142857,8962.46,-25.27,
+Pomegranate,bharuch,OK,3366.3888888888887,3043.89,-10.07,
+Pomegranate,bhavnagar,SKIP,,,,no price cache
+Pomegranate,botad,SKIP,,,,no price cache
+Pomegranate,chhotaudaipur,SKIP,,,,no price cache
+Pomegranate,dahod,SKIP,,,,no price cache
+Pomegranate,devbhumidwarka,SKIP,,,,no price cache
+Pomegranate,gandhinagar,SKIP,,,,no price cache
+Pomegranate,girsomnath,SKIP,,,,no price cache
+Pomegranate,jamnagar,SKIP,,,,no price cache
+Pomegranate,junagadh,SKIP,,,,only 4 months history (need 12)
+Pomegranate,kachchh,OK,4255.793650793651,4405.38,3.45,
+Pomegranate,kheda,SKIP,,,,no price cache
+Pomegranate,mahesana,SKIP,,,,no price cache
+Pomegranate,mahisagar,SKIP,,,,no price cache
+Pomegranate,morbi,SKIP,,,,no price cache
+Pomegranate,narmada,SKIP,,,,no price cache
+Pomegranate,navsari,SKIP,,,,no price cache
+Pomegranate,panchmahals,SKIP,,,,no price cache
+Pomegranate,patan,SKIP,,,,no price cache
+Pomegranate,porbandar,OK,6146.170634920635,10195.48,50.61,
+Pomegranate,rajkot,OK,3579.583333333333,6432.45,58.61,
+Pomegranate,sabarkantha,SKIP,,,,no price cache
+Pomegranate,surat,SKIP,,,,no price cache
+Pomegranate,surendranagar,SKIP,,,,no price cache
+Pomegranate,tapi,SKIP,,,,no price cache
+Pomegranate,thedangs,SKIP,,,,no price cache
+Pomegranate,vadodara,OK,5981.666666666667,11513.23,65.48,
+Pomegranate,valsad,SKIP,,,,no price cache
+Pumpkin,ahmadabad,OK,944.2745911495912,1429.36,41.46,
+Pumpkin,amreli,SKIP,,,,no price cache
+Pumpkin,anand,SKIP,,,,only 5 months history (need 12)
+Pumpkin,aravalli,SKIP,,,,no price cache
+Pumpkin,banaskantha,OK,320.96792328042335,774.83,88.13,
+Pumpkin,bharuch,SKIP,,,,only 7 months history (need 12)
+Pumpkin,bhavnagar,SKIP,,,,no price cache
+Pumpkin,botad,SKIP,,,,no price cache
+Pumpkin,chhotaudaipur,SKIP,,,,no price cache
+Pumpkin,dahod,OK,1567.3063325563323,2502.64,46.8,
+Pumpkin,devbhumidwarka,SKIP,,,,no price cache
+Pumpkin,gandhinagar,SKIP,,,,only 1 months history (need 12)
+Pumpkin,girsomnath,SKIP,,,,only 3 months history (need 12)
+Pumpkin,jamnagar,SKIP,,,,no price cache
+Pumpkin,junagadh,SKIP,,,,no price cache
+Pumpkin,kachchh,SKIP,,,,no price cache
+Pumpkin,kheda,OK,392.3543956043956,864.82,79.04,
+Pumpkin,mahesana,SKIP,,,,no price cache
+Pumpkin,mahisagar,SKIP,,,,no price cache
+Pumpkin,morbi,SKIP,,,,no price cache
+Pumpkin,narmada,SKIP,,,,no price cache
+Pumpkin,navsari,SKIP,,,,no price cache
+Pumpkin,panchmahals,SKIP,,,,only 1 months history (need 12)
+Pumpkin,patan,OK,404.03521825396825,1044.81,95.01,
+Pumpkin,porbandar,SKIP,,,,no price cache
+Pumpkin,rajkot,OK,2075.1975108225106,1670.15,-21.71,
+Pumpkin,sabarkantha,SKIP,,,,no price cache
+Pumpkin,surat,OK,1288.9132996633,2595.32,69.99,
+Pumpkin,surendranagar,SKIP,,,,no price cache
+Pumpkin,tapi,SKIP,,,,no price cache
+Pumpkin,thedangs,SKIP,,,,no price cache
+Pumpkin,vadodara,OK,967.4359589606299,1774.71,60.67,
+Pumpkin,valsad,SKIP,,,,no price cache
+Raddish,ahmadabad,OK,934.8373015873018,835.66,-11.21,
+Raddish,amreli,SKIP,,,,only 3 months history (need 12)
+Raddish,anand,OK,412.2650266400267,1188.16,105.85,
+Raddish,aravalli,SKIP,,,,no price cache
+Raddish,banaskantha,OK,317.76960784313724,912.78,105.52,
+Raddish,bharuch,OK,1168.1730561105562,2040.57,55.78,
+Raddish,bhavnagar,SKIP,,,,no price cache
+Raddish,botad,OK,319.87968975468976,855.0,98.32,
+Raddish,chhotaudaipur,SKIP,,,,no price cache
+Raddish,dahod,OK,1058.291366041366,1629.63,43.17,
+Raddish,devbhumidwarka,SKIP,,,,no price cache
+Raddish,gandhinagar,OK,863.3478835978835,1668.33,65.88,
+Raddish,girsomnath,OK,1077.3949232585599,1567.61,37.5,
+Raddish,jamnagar,SKIP,,,,no price cache
+Raddish,junagadh,SKIP,,,,no price cache
+Raddish,kachchh,SKIP,,,,only 1 months history (need 12)
+Raddish,kheda,OK,710.9854104229105,1070.0,40.88,
+Raddish,mahesana,SKIP,,,,no price cache
+Raddish,mahisagar,SKIP,,,,no price cache
+Raddish,morbi,SKIP,,,,only 1 months history (need 12)
+Raddish,narmada,SKIP,,,,no price cache
+Raddish,navsari,SKIP,,,,no price cache
+Raddish,panchmahals,SKIP,,,,no price cache
+Raddish,patan,OK,369.4409430438842,992.03,98.78,
+Raddish,porbandar,SKIP,,,,no price cache
+Raddish,rajkot,OK,635.969977553311,1600.4,92.29,
+Raddish,sabarkantha,SKIP,,,,no price cache
+Raddish,surat,SKIP,,,,only 2 months history (need 12)
+Raddish,surendranagar,OK,1439.0069444444446,2477.54,54.33,
+Raddish,tapi,SKIP,,,,no price cache
+Raddish,thedangs,SKIP,,,,no price cache
+Raddish,vadodara,OK,1732.4240491942699,3068.26,57.16,
+Raddish,valsad,SKIP,,,,no price cache
+Rajgir,ahmadabad,SKIP,,,,no price cache
+Rajgir,amreli,OK,6088.532195767195,11916.01,67.15,
+Rajgir,anand,OK,2967.572300200605,6516.82,78.66,
+Rajgir,aravalli,SKIP,,,,no price cache
+Rajgir,banaskantha,OK,7464.51663023722,7025.0,-6.07,
+Rajgir,bharuch,SKIP,,,,no price cache
+Rajgir,bhavnagar,SKIP,,,,only 9 months history (need 12)
+Rajgir,botad,SKIP,,,,no price cache
+Rajgir,chhotaudaipur,SKIP,,,,no price cache
+Rajgir,dahod,SKIP,,,,no price cache
+Rajgir,devbhumidwarka,SKIP,,,,no price cache
+Rajgir,gandhinagar,OK,1835.5944444444444,1799.56,-1.98,
+Rajgir,girsomnath,SKIP,,,,only 1 months history (need 12)
+Rajgir,jamnagar,SKIP,,,,no price cache
+Rajgir,junagadh,SKIP,,,,only 3 months history (need 12)
+Rajgir,kachchh,SKIP,,,,no price cache
+Rajgir,kheda,SKIP,,,,no price cache
+Rajgir,mahesana,SKIP,,,,no price cache
+Rajgir,mahisagar,SKIP,,,,no price cache
+Rajgir,morbi,SKIP,,,,only 5 months history (need 12)
+Rajgir,narmada,SKIP,,,,no price cache
+Rajgir,navsari,SKIP,,,,no price cache
+Rajgir,panchmahals,SKIP,,,,no price cache
+Rajgir,patan,OK,6661.265415913228,6125.06,-8.39,
+Rajgir,porbandar,SKIP,,,,no price cache
+Rajgir,rajkot,OK,3007.7487798149564,6471.91,76.63,
+Rajgir,sabarkantha,SKIP,,,,no price cache
+Rajgir,surat,SKIP,,,,no price cache
+Rajgir,surendranagar,SKIP,,,,only 2 months history (need 12)
+Rajgir,tapi,SKIP,,,,no price cache
+Rajgir,thedangs,SKIP,,,,no price cache
+Rajgir,vadodara,SKIP,,,,no price cache
+Rajgir,valsad,SKIP,,,,no price cache
+Soanf,ahmadabad,SKIP,,,,no price cache
+Soanf,amreli,SKIP,,,,no price cache
+Soanf,anand,SKIP,,,,no price cache
+Soanf,aravalli,SKIP,,,,no price cache
+Soanf,banaskantha,OK,9317.243728569594,16015.93,54.17,
+Soanf,bharuch,SKIP,,,,no price cache
+Soanf,bhavnagar,OK,6277.319444444443,12454.81,68.52,
+Soanf,botad,OK,7559.667460317461,6873.59,-9.51,
+Soanf,chhotaudaipur,SKIP,,,,no price cache
+Soanf,dahod,SKIP,,,,no price cache
+Soanf,devbhumidwarka,SKIP,,,,no price cache
+Soanf,gandhinagar,SKIP,,,,only 1 months history (need 12)
+Soanf,girsomnath,SKIP,,,,no price cache
+Soanf,jamnagar,SKIP,,,,no price cache
+Soanf,junagadh,SKIP,,,,no price cache
+Soanf,kachchh,OK,7124.238888888888,4499.62,-45.95,
+Soanf,kheda,OK,10997.25,21428.99,66.71,
+Soanf,mahesana,OK,10976.236117216118,17891.98,48.86,
+Soanf,mahisagar,SKIP,,,,no price cache
+Soanf,morbi,OK,6801.036046738349,10562.49,44.02,
+Soanf,narmada,SKIP,,,,no price cache
+Soanf,navsari,SKIP,,,,no price cache
+Soanf,panchmahals,SKIP,,,,no price cache
+Soanf,patan,OK,7585.348103470604,14842.36,67.13,
+Soanf,porbandar,SKIP,,,,no price cache
+Soanf,rajkot,SKIP,,,,no price cache
+Soanf,sabarkantha,OK,12290.90777777778,24164.63,67.6,
+Soanf,surat,SKIP,,,,no price cache
+Soanf,surendranagar,OK,6858.141534391534,3891.91,-56.65,
+Soanf,tapi,SKIP,,,,no price cache
+Soanf,thedangs,SKIP,,,,no price cache
+Soanf,vadodara,OK,11737.023809523811,27028.51,83.41,
+Soanf,valsad,SKIP,,,,no price cache
+Sweet Potato,ahmadabad,OK,2936.279761904762,2560.15,-13.71,
+Sweet Potato,amreli,SKIP,,,,no price cache
+Sweet Potato,anand,OK,602.9583333333334,1778.29,108.16,
+Sweet Potato,aravalli,SKIP,,,,no price cache
+Sweet Potato,banaskantha,OK,899.002192982456,2092.45,84.48,
+Sweet Potato,bharuch,OK,1431.3511904761904,3773.1,96.93,
+Sweet Potato,bhavnagar,SKIP,,,,no price cache
+Sweet Potato,botad,OK,485.23656204906206,849.57,56.01,
+Sweet Potato,chhotaudaipur,SKIP,,,,no price cache
+Sweet Potato,dahod,OK,2063.824074074074,2335.49,12.37,
+Sweet Potato,devbhumidwarka,SKIP,,,,no price cache
+Sweet Potato,gandhinagar,SKIP,,,,only 5 months history (need 12)
+Sweet Potato,girsomnath,SKIP,,,,only 5 months history (need 12)
+Sweet Potato,jamnagar,SKIP,,,,no price cache
+Sweet Potato,junagadh,SKIP,,,,no price cache
+Sweet Potato,kachchh,SKIP,,,,only 1 months history (need 12)
+Sweet Potato,kheda,OK,1639.5912698412699,1841.26,11.6,
+Sweet Potato,mahesana,OK,931.015873015873,2523.83,99.73,
+Sweet Potato,mahisagar,SKIP,,,,no price cache
+Sweet Potato,morbi,SKIP,,,,no price cache
+Sweet Potato,narmada,SKIP,,,,no price cache
+Sweet Potato,navsari,OK,1371.804834054834,3675.88,98.57,
+Sweet Potato,panchmahals,SKIP,,,,no price cache
+Sweet Potato,patan,OK,1261.3253517316018,3407.31,99.38,
+Sweet Potato,porbandar,SKIP,,,,no price cache
+Sweet Potato,rajkot,OK,952.301984126984,2060.73,77.19,
+Sweet Potato,sabarkantha,SKIP,,,,no price cache
+Sweet Potato,surat,OK,2839.732473544974,2822.84,-0.6,
+Sweet Potato,surendranagar,OK,2780.5904280904283,5711.38,71.98,
+Sweet Potato,tapi,SKIP,,,,no price cache
+Sweet Potato,thedangs,SKIP,,,,no price cache
+Sweet Potato,vadodara,OK,2109.2738095238096,1888.44,-11.06,
+Sweet Potato,valsad,SKIP,,,,no price cache
+Tinda,ahmadabad,OK,4061.166005291005,7698.67,63.96,
+Tinda,amreli,SKIP,,,,no price cache
+Tinda,anand,OK,3234.587632275133,7893.45,89.21,
+Tinda,aravalli,SKIP,,,,no price cache
+Tinda,banaskantha,OK,1583.4444444444446,4049.93,93.91,
+Tinda,bharuch,OK,3012.597222222222,2426.27,-21.64,
+Tinda,bhavnagar,SKIP,,,,no price cache
+Tinda,botad,SKIP,,,,only 7 months history (need 12)
+Tinda,chhotaudaipur,SKIP,,,,no price cache
+Tinda,dahod,OK,2748.7579365079364,2701.1,-1.75,
+Tinda,devbhumidwarka,SKIP,,,,no price cache
+Tinda,gandhinagar,OK,2611.111111111111,5799.56,79.8,
+Tinda,girsomnath,OK,1647.6944444444443,4160.86,92.63,
+Tinda,jamnagar,SKIP,,,,no price cache
+Tinda,junagadh,SKIP,,,,only 11 months history (need 12)
+Tinda,kachchh,SKIP,,,,only 11 months history (need 12)
+Tinda,kheda,OK,2110.408068783069,1297.84,-48.62,
+Tinda,mahesana,SKIP,,,,no price cache
+Tinda,mahisagar,SKIP,,,,no price cache
+Tinda,morbi,SKIP,,,,no price cache
+Tinda,narmada,SKIP,,,,no price cache
+Tinda,navsari,OK,3384.1477272727275,7245.68,76.13,
+Tinda,panchmahals,SKIP,,,,no price cache
+Tinda,patan,SKIP,,,,only 1 months history (need 12)
+Tinda,porbandar,SKIP,,,,no price cache
+Tinda,rajkot,OK,908.6284722222223,2288.2,92.36,
+Tinda,sabarkantha,SKIP,,,,only 10 months history (need 12)
+Tinda,surat,OK,1699.9583333333333,4578.72,99.08,
+Tinda,surendranagar,OK,4656.077741702741,6819.32,38.16,
+Tinda,tapi,SKIP,,,,no price cache
+Tinda,thedangs,SKIP,,,,no price cache
+Tinda,vadodara,SKIP,,,,no price cache
+Tinda,valsad,OK,5905.6499736374735,12419.3,74.33,
+Tobacco,ahmadabad,SKIP,,,,only 3 months history (need 12)
+Tobacco,amreli,SKIP,,,,no price cache
+Tobacco,anand,SKIP,,,,no price cache
+Tobacco,aravalli,SKIP,,,,no price cache
+Tobacco,banaskantha,OK,7930.861772486771,14570.61,60.82,
+Tobacco,bharuch,SKIP,,,,no price cache
+Tobacco,bhavnagar,SKIP,,,,no price cache
+Tobacco,botad,SKIP,,,,no price cache
+Tobacco,chhotaudaipur,SKIP,,,,no price cache
+Tobacco,dahod,SKIP,,,,no price cache
+Tobacco,devbhumidwarka,SKIP,,,,no price cache
+Tobacco,gandhinagar,SKIP,,,,no price cache
+Tobacco,girsomnath,SKIP,,,,no price cache
+Tobacco,jamnagar,SKIP,,,,no price cache
+Tobacco,junagadh,SKIP,,,,no price cache
+Tobacco,kachchh,SKIP,,,,no price cache
+Tobacco,kheda,OK,2116.9444444444443,3921.18,61.64,
+Tobacco,mahesana,OK,6664.5384920634915,12128.66,59.88,
+Tobacco,mahisagar,SKIP,,,,no price cache
+Tobacco,morbi,SKIP,,,,no price cache
+Tobacco,narmada,SKIP,,,,no price cache
+Tobacco,navsari,SKIP,,,,no price cache
+Tobacco,panchmahals,SKIP,,,,no price cache
+Tobacco,patan,SKIP,,,,only 10 months history (need 12)
+Tobacco,porbandar,SKIP,,,,no price cache
+Tobacco,rajkot,SKIP,,,,no price cache
+Tobacco,sabarkantha,OK,7235.833333333333,13445.7,61.96,
+Tobacco,surat,SKIP,,,,no price cache
+Tobacco,surendranagar,SKIP,,,,no price cache
+Tobacco,tapi,SKIP,,,,no price cache
+Tobacco,thedangs,SKIP,,,,no price cache
+Tobacco,vadodara,OK,4381.352777777778,3648.73,-18.3,
+Tobacco,valsad,SKIP,,,,no price cache
+Tomato,ahmadabad,OK,2355.3038921775706,4352.16,61.4,
+Tomato,amreli,OK,2918.4403225260417,2150.54,-30.53,
+Tomato,anand,OK,2048.446497241064,4144.02,70.46,
+Tomato,aravalli,SKIP,,,,no price cache
+Tomato,banaskantha,OK,2484.3776314348866,4035.57,48.51,
+Tomato,bharuch,OK,1686.6550688843647,3409.86,70.39,
+Tomato,bhavnagar,OK,2534.8166768901738,2022.72,-22.57,
+Tomato,botad,OK,973.7670804475941,2357.26,88.41,
+Tomato,chhotaudaipur,SKIP,,,,no price cache
+Tomato,dahod,OK,1902.2221867528262,3889.59,71.53,
+Tomato,devbhumidwarka,SKIP,,,,only 1 months history (need 12)
+Tomato,gandhinagar,OK,2203.5850324375297,4159.32,63.53,
+Tomato,girsomnath,OK,3143.2293938718085,2643.43,-17.32,
+Tomato,jamnagar,SKIP,,,,only 1 months history (need 12)
+Tomato,junagadh,OK,1218.0584947278576,3052.89,91.88,
+Tomato,kachchh,OK,2379.24871443486,2381.44,0.09,
+Tomato,kheda,OK,2193.628408831534,4125.72,63.17,
+Tomato,mahesana,OK,2252.779924769372,4393.52,66.8,
+Tomato,mahisagar,SKIP,,,,no price cache
+Tomato,morbi,OK,2459.3198360097385,4552.25,61.57,
+Tomato,narmada,SKIP,,,,no price cache
+Tomato,navsari,OK,2053.783962871298,4780.57,84.49,
+Tomato,panchmahals,SKIP,,,,only 5 months history (need 12)
+Tomato,patan,OK,1692.0389702889702,2085.09,20.89,
+Tomato,porbandar,OK,2774.170415170867,4779.27,54.39,
+Tomato,rajkot,OK,2294.2199062700297,4426.63,65.72,
+Tomato,sabarkantha,SKIP,,,,only 4 months history (need 12)
+Tomato,surat,OK,1931.6776020512402,4063.53,74.37,
+Tomato,surendranagar,OK,2475.2175579582863,4128.5,51.16,
+Tomato,tapi,SKIP,,,,no price cache
+Tomato,thedangs,SKIP,,,,no price cache
+Tomato,vadodara,OK,2070.6999259543613,4041.37,66.87,
+Tomato,valsad,SKIP,,,,only 4 months history (need 12)
+Water Melon,ahmadabad,OK,1046.0622261725202,945.31,-10.13,
+Water Melon,amreli,SKIP,,,,only 10 months history (need 12)
+Water Melon,anand,SKIP,,,,only 1 months history (need 12)
+Water Melon,aravalli,SKIP,,,,no price cache
+Water Melon,banaskantha,OK,1065.093253968254,1572.7,38.97,
+Water Melon,bharuch,OK,1068.0001803751804,1015.26,-5.06,
+Water Melon,bhavnagar,SKIP,,,,no price cache
+Water Melon,botad,SKIP,,,,no price cache
+Water Melon,chhotaudaipur,SKIP,,,,no price cache
+Water Melon,dahod,SKIP,,,,only 1 months history (need 12)
+Water Melon,devbhumidwarka,SKIP,,,,no price cache
+Water Melon,gandhinagar,OK,868.639455782313,1021.86,16.25,
+Water Melon,girsomnath,SKIP,,,,no price cache
+Water Melon,jamnagar,SKIP,,,,no price cache
+Water Melon,junagadh,SKIP,,,,only 3 months history (need 12)
+Water Melon,kachchh,SKIP,,,,only 1 months history (need 12)
+Water Melon,kheda,SKIP,,,,no price cache
+Water Melon,mahesana,SKIP,,,,no price cache
+Water Melon,mahisagar,SKIP,,,,no price cache
+Water Melon,morbi,SKIP,,,,no price cache
+Water Melon,narmada,SKIP,,,,no price cache
+Water Melon,navsari,SKIP,,,,only 1 months history (need 12)
+Water Melon,panchmahals,SKIP,,,,no price cache
+Water Melon,patan,SKIP,,,,no price cache
+Water Melon,porbandar,OK,1431.6624895572263,2687.61,62.98,
+Water Melon,rajkot,OK,728.8465608465608,937.35,25.16,
+Water Melon,sabarkantha,SKIP,,,,no price cache
+Water Melon,surat,SKIP,,,,no price cache
+Water Melon,surendranagar,OK,1025.7301322751323,1299.33,23.64,
+Water Melon,tapi,SKIP,,,,no price cache
+Water Melon,thedangs,SKIP,,,,no price cache
+Water Melon,vadodara,OK,2991.984126984127,5099.8,53.33,
+Water Melon,valsad,SKIP,,,,no price cache
+Wheat,ahmadabad,OK,2075.76126984127,3746.32,59.04,
+Wheat,amreli,OK,2176.815553150553,4157.56,64.71,
+Wheat,anand,OK,1794.8659427609427,3409.75,64.17,
+Wheat,aravalli,SKIP,,,,no price cache
+Wheat,banaskantha,OK,2194.614287656788,3974.3,59.38,
+Wheat,bharuch,OK,2124.2400793650795,3559.91,51.63,
+Wheat,bhavnagar,OK,2198.1730158730156,4159.12,63.77,
+Wheat,botad,OK,2126.461904761905,3761.35,57.03,
+Wheat,chhotaudaipur,SKIP,,,,no price cache
+Wheat,dahod,OK,2303.136904761904,3970.2,54.45,
+Wheat,devbhumidwarka,OK,1664.2777777777778,3247.49,66.85,
+Wheat,gandhinagar,OK,2260.3321560846557,4021.75,57.62,
+Wheat,girsomnath,OK,2350.1944444444443,4199.45,58.05,
+Wheat,jamnagar,OK,2409.8652777777775,4055.23,52.04,
+Wheat,junagadh,OK,2436.5315476190476,4235.84,55.3,
+Wheat,kachchh,OK,1789.8600000000001,3455.4,65.78,
+Wheat,kheda,OK,1921.535043105043,3375.9,56.35,
+Wheat,mahesana,OK,2397.0929232804233,4009.39,51.44,
+Wheat,mahisagar,SKIP,,,,no price cache
+Wheat,morbi,OK,2281.718253968254,3806.12,51.17,
+Wheat,narmada,SKIP,,,,no price cache
+Wheat,navsari,SKIP,,,,no price cache
+Wheat,panchmahals,OK,1773.7437826797386,3393.23,64.87,
+Wheat,patan,OK,2263.3400949975953,4197.6,61.77,
+Wheat,porbandar,OK,1772.486111111111,3550.04,69.46,
+Wheat,rajkot,OK,2488.2516686043,4129.98,50.67,
+Wheat,sabarkantha,OK,2480.8500691900695,4020.72,48.29,
+Wheat,surat,OK,1675.5231601731602,3397.67,70.7,
+Wheat,surendranagar,OK,2237.5861111111108,4003.62,58.18,
+Wheat,tapi,SKIP,,,,no price cache
+Wheat,thedangs,SKIP,,,,no price cache
+Wheat,vadodara,OK,2387.9560795685798,3982.04,51.14,
+Wheat,valsad,SKIP,,,,no price cache

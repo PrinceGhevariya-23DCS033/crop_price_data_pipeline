@@ -1,0 +1,303 @@
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                 CROP PRICE V2 - DEPLOYMENT WORKFLOW                 │
+└─────────────────────────────────────────────────────────────────────┘
+
+                          MONTHLY CYCLE
+                          ============
+
+┌──────────────────── BEFORE 20TH ────────────────────┐
+│                                                      │
+│  👤 YOU (Local Machine)                             │
+│  ────────────────────                               │
+│                                                      │
+│  1. Update NDVI Fallback                            │
+│     $ python update_ndvi_fallback.py                │
+│     ↓                                                │
+│     Generates NDVI values for current month         │
+│     based on historical patterns                    │
+│                                                      │
+│  2. Commit & Push                                   │
+│     $ git add NDVI/                                 │
+│     $ git commit -m "Update NDVI"                   │
+│     $ git push                                      │
+│     ↓                                                │
+│     Updates repository with new NDVI data           │
+│                                                      │
+└──────────────────────────────────────────────────────┘
+                          ↓
+                          
+┌──────────────────── 22ND (AUTO) ────────────────────┐
+│                                                      │
+│  🤖 GITHUB ACTIONS (Automatic)                      │
+│  ─────────────────────────────────                  │
+│                                                      │
+│  Workflow: monthly-cache-update.yml                 │
+│  Trigger: Cron Schedule (0 2 22 * *)                │
+│                                                      │
+│  ┌────────────────────────────────────────┐         │
+│  │ Step 1: Checkout Repository            │         │
+│  │ ✓ Gets latest code & NDVI data         │         │
+│  └────────────────────────────────────────┘         │
+│                    ↓                                 │
+│  ┌────────────────────────────────────────┐         │
+│  │ Step 2: Setup Python 3.10              │         │
+│  │ ✓ Installs dependencies                │         │
+│  └────────────────────────────────────────┘         │
+│                    ↓                                 │
+│  ┌────────────────────────────────────────┐         │
+│  │ Step 3: Check NDVI Availability        │         │
+│  │ ✓ Verifies CSV has current data        │         │
+│  └────────────────────────────────────────┘         │
+│                    ↓                                 │
+│  ┌────────────────────────────────────────┐         │
+│  │ Step 4: Update Monthly Cache           │         │
+│  │ ├─ Fetch prices (data.gov.in)          │         │
+│  │ │  • API Key from secret                │         │
+│  │ │  • 30-day average per commodity       │         │
+│  │ │  • Result: ~1,485 JSON files          │         │
+│  │ │                                        │         │
+│  │ ├─ Fetch rainfall (Open-Meteo)         │         │
+│  │ │  • No auth required                   │         │
+│  │ │  • Previous month data                │         │
+│  │ │  • Result: ~33 JSON files             │         │
+│  │ │                                        │         │
+│  │ └─ Read NDVI (CSV)                      │         │
+│  │    • From committed CSV file            │         │
+│  │    • District-level values              │         │
+│  │    • Result: ~33 JSON files             │         │
+│  └────────────────────────────────────────┘         │
+│                    ↓                                 │
+│  ┌────────────────────────────────────────┐         │
+│  │ Step 5: Verify Cache                   │         │
+│  │ ✓ Count files generated                │         │
+│  │ ✓ Check metadata                       │         │
+│  │ ✓ Warn if prices < 100                 │         │
+│  └────────────────────────────────────────┘         │
+│                    ↓                                 │
+│  ┌────────────────────────────────────────┐         │
+│  │ Step 6: Prepare Deployment Files       │         │
+│  │ Cache-Only Mode:                       │         │
+│  │   • monthly_cache/ only                │         │
+│  │ Full Mode (if force_deploy=true):     │         │
+│  │   • monthly_cache/                     │         │
+│  │   • app.py                             │         │
+│  │   • src/                               │         │
+│  │   • models & data                      │         │
+│  └────────────────────────────────────────┘         │
+│                    ↓                                 │
+│  ┌────────────────────────────────────────┐         │
+│  │ Step 7: Upload to Hugging Face         │         │
+│  │ Script: ci_upload_to_hf.py             │         │
+│  │ • HF_TOKEN from secret                 │         │
+│  │ • Uploads to Space                     │         │
+│  │ • Creates commit                       │         │
+│  └────────────────────────────────────────┘         │
+│                    ↓                                 │
+│  ┌────────────────────────────────────────┐         │
+│  │ Step 8: Verify & Report                │         │
+│  │ ✓ Check HF Space URL                   │         │
+│  │ ✓ Generate summary                     │         │
+│  │ ✓ Report statistics                    │         │
+│  └────────────────────────────────────────┘         │
+│                                                      │
+└──────────────────────────────────────────────────────┘
+                          ↓
+                          
+┌──────────────────── RESULT ─────────────────────────┐
+│                                                      │
+│  🌐 HUGGING FACE SPACE                              │
+│  ─────────────────────                              │
+│                                                      │
+│  Space: princegh410/crop-price                      │
+│  Status: Building... then Running                   │
+│                                                      │
+│  ┌────────────────────────────────────────┐         │
+│  │ Updated Files:                         │         │
+│  │                                        │         │
+│  │ monthly_cache/                         │         │
+│  │ ├── prices/                            │         │
+│  │ │   ├── wheat_ahmedabad.json          │         │
+│  │ │   ├── cotton_rajkot.json            │         │
+│  │ │   └── ... (1,485 files)             │         │
+│  │ ├── rainfall/                          │         │
+│  │ │   ├── ahmedabad.json                │         │
+│  │ │   └── ... (33 files)                │         │
+│  │ ├── ndvi/                              │         │
+│  │ │   ├── ahmedabad.json                │         │
+│  │ │   └── ... (33 files)                │         │
+│  │ └── cache_metadata.json                │         │
+│  │                                        │         │
+│  │ (Plus app.py, src/, etc. if full)     │         │
+│  └────────────────────────────────────────┘         │
+│                    ↓                                 │
+│  ┌────────────────────────────────────────┐         │
+│  │ Build Process (HF)                     │         │
+│  │ 1. Install requirements.txt            │         │
+│  │ 2. Load cached data                    │         │
+│  │ 3. Start Gradio app                    │         │
+│  │ 4. Ready for predictions!              │         │
+│  └────────────────────────────────────────┘         │
+│                                                      │
+└──────────────────────────────────────────────────────┘
+                          ↓
+                          
+┌────────────────── AFTER 22ND ───────────────────────┐
+│                                                      │
+│  👤 YOU (Check Status)                              │
+│  ──────────────────                                 │
+│                                                      │
+│  1. GitHub Actions                                  │
+│     Repository → Actions → Check logs               │
+│     ✓ View workflow execution                       │
+│     ✓ Check summary report                          │
+│                                                      │
+│  2. Hugging Face Space                              │
+│     Visit: https://hf.co/spaces/princegh410/...     │
+│     ✓ Test predictions                              │
+│     ✓ Check cache status                            │
+│     ✓ View logs if issues                           │
+│                                                      │
+│  3. Manual Trigger (if needed)                      │
+│     Actions → Run workflow                          │
+│     ✓ Re-run with different options                 │
+│     ✓ Force full deployment                         │
+│                                                      │
+└──────────────────────────────────────────────────────┘
+
+════════════════════════════════════════════════════════
+                    DATA FLOW DIAGRAM
+════════════════════════════════════════════════════════
+
+      ┌──────────────┐
+      │ data.gov.in  │─────┐
+      │  (Prices)    │     │
+      └──────────────┘     │
+                           ▼
+      ┌──────────────┐   ┌────────────────┐
+      │  Open-Meteo  │──>│ update_monthly │
+      │  (Rainfall)  │   │   _cache.py    │
+      └──────────────┘   └────────────────┘
+                                 │
+      ┌──────────────┐           │
+      │  NDVI CSV    │───────────┘
+      │ (Historical) │
+      └──────────────┘
+              │
+              ▼
+        ┌──────────────┐
+        │monthly_cache/│
+        │   (JSON)     │
+        └──────────────┘
+              │
+              ▼
+      ┌──────────────────┐
+      │ ci_upload_to_    │
+      │    hf.py         │
+      └──────────────────┘
+              │
+              ▼
+      ┌──────────────────┐
+      │  Hugging Face    │
+      │     Space        │
+      │  (Production)    │
+      └──────────────────┘
+              │
+              ▼
+      ┌──────────────────┐
+      │   👥 Users       │
+      │  (Predictions)   │
+      └──────────────────┘
+
+════════════════════════════════════════════════════════
+                    NDVI UPDATE OPTIONS
+════════════════════════════════════════════════════════
+
+Option 1: Fallback Script (RECOMMENDED)
+──────────────────────────────────────────
+Python Script: update_ndvi_fallback.py
+Frequency: Monthly (before 22nd)
+Auth: None required
+Accuracy: Good (based on historical patterns)
+Complexity: ⭐ Easy
+
+   Historical CSV  →  Fallback Script  →  Updated CSV
+   (2005-2024)         (generates           (2005-2026)
+                        2025-2026)
+
+Option 2: Google Earth Engine
+──────────────────────────────
+Tool: GEE Python API
+Frequency: Monthly
+Auth: Required (complex)
+Accuracy: Excellent (real satellite data)
+Complexity: ⭐⭐⭐⭐ Hard
+
+   GEE Auth  →  Python Script  →  Export CSV  →  Commit
+
+Option 3: Automatic Fallback
+─────────────────────────────
+Method: Built into data_fetchers.py
+Frequency: Always
+Auth: None
+Accuracy: Fair (uses last available)
+Complexity: ⭐ No action required
+
+   Request NDVI  →  Not found  →  Use latest  →  Return
+
+════════════════════════════════════════════════════════
+                   DEPLOYMENT MODES
+════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════╗
+║           CACHE-ONLY MODE (Default)                ║
+╠════════════════════════════════════════════════════╣
+║ When: Monthly updates                              ║
+║ Files: monthly_cache/ only                         ║
+║ Size: ~1-5 MB                                      ║
+║ Time: ~30 seconds                                  ║
+║ Use: force_deploy: false                           ║
+╚════════════════════════════════════════════════════╝
+
+╔════════════════════════════════════════════════════╗
+║              FULL DEPLOYMENT MODE                  ║
+╠════════════════════════════════════════════════════╣
+║ When: Initial setup, major changes                ║
+║ Files: All (cache + app + models)                 ║
+║ Size: ~50-500 MB                                   ║
+║ Time: ~2-10 minutes                                ║
+║ Use: force_deploy: true                            ║
+╚════════════════════════════════════════════════════╝
+
+════════════════════════════════════════════════════════
+                    QUICK REFERENCE
+════════════════════════════════════════════════════════
+
+📅 Monthly Workflow:
+├─ Before 20th: python update_ndvi_fallback.py
+├─ Before 20th: git add NDVI/ && git commit && git push
+├─ 22nd (auto): GitHub Action runs
+└─ After 22nd: Check Actions tab + HF Space
+
+🔐 Required Secrets:
+├─ DATA_GOV_API_KEY (data.gov.in)
+└─ HF_TOKEN (Hugging Face, write permission)
+
+📂 Files Uploaded:
+├─ Always: monthly_cache/ (1-5 MB)
+└─ Force: app.py, src/, models/ (50-500 MB)
+
+🔧 Manual Trigger:
+Actions → Monthly Cache Update → Run workflow
+├─ Year: blank (or 2026)
+├─ Month: blank (or 1-12)
+├─ Skip prices: false
+└─ Force deploy: false
+
+🌐 URLs:
+├─ Actions: github.com/YOUR_USER/YOUR_REPO/actions
+├─ HF Space: hf.co/spaces/princegh410/crop-price
+└─ HF Token: hf.co/settings/tokens
+
+════════════════════════════════════════════════════════
+```

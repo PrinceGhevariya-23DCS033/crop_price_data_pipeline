@@ -1,0 +1,49 @@
+# Docker ignore file for HF Spaces
+# Exclude files not needed in container
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+README.txt
+
+# Tests
+test_*.py
+*_test.py
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Notebooks
+*.ipynb
+Notbooks/
+
+# Logs
+*.log
+
+# Scripts not needed in container
+update_monthly_cache.py
+update_cache.bat
+update_cache.sh

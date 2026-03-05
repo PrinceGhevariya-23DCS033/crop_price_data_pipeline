@@ -1,0 +1,26 @@
+# Hugging Face Space Requirements
+# Gujarat Crop Price Forecasting System
+
+# Web Framework
+gradio>=4.0.0
+
+# Core ML & Data
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+xgboost>=2.0.0
+
+# Date/Time
+python-dateutil>=2.8.0
+
+# HTTP Requests (for data fetching - if fallback needed)
+requests>=2.31.0
+
+# Utilities
+pathlib
+
+# Note: The following are NOT needed for Hugging Face deployment
+# as we use cached data only:
+# - uvicorn (FastAPI server)
+# - fastapi (REST API)
+# - earthengine-api (Google Earth Engine - requires auth)

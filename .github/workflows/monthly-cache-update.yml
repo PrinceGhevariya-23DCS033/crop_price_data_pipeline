@@ -1,0 +1,209 @@
+name: Monthly Cache Update to Hugging Face
+
+# ─────────────────────────────────────────────
+# Runs on the 22nd of every month at 02:00 UTC
+# (NDVI satellite data is available by ~20th)
+# Also triggered manually from the Actions tab
+# ─────────────────────────────────────────────
+on:
+  schedule:
+    - cron: '0 2 22 * *'   # 02:00 UTC on 22nd of every month
+  workflow_dispatch:        # manual trigger with optional inputs
+    inputs:
+      year:
+        description: 'Year (leave blank = current year)'
+        required: false
+        default: ''
+      month:
+        description: 'Month 1-12 (leave blank = current month)'
+        required: false
+        default: ''
+      skip_prices:
+        description: 'Skip price update from data.gov.in?'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['false', 'true']
+      force_deploy:
+        description: 'Force full deployment (not just cache)?'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['false', 'true']
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+
+      # ── 1. Checkout the full repo ───────────────────────────────────────
+      - name: Checkout Crop_Price_V2 repository
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+          fetch-depth: 1
+
+      # ── 2. Python setup ────────────────────────────────────────────────
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+          cache-dependency-path: 'requirements.txt'
+
+      # ── 3. Install dependencies ────────────────────────────────────────
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install huggingface_hub   # for upload step
+
+      # ── 4. Update NDVI data (if available) ─────────────────────────────
+      # Google Earth Engine requires authentication, so we use CSV fallback
+      # If you want to update NDVI data, manually run update_ndvi_csv.py locally
+      - name: Check NDVI data availability
+        run: |
+          if [ -f "NDVI/gujarat_monthly_ndvi_clean_2005_2024_final.csv" ]; then
+            echo "✓ NDVI CSV file found"
+            LATEST_DATE=$(python3 -c "import pandas as pd; df=pd.read_csv('NDVI/gujarat_monthly_ndvi_clean_2005_2024_final.csv'); print(df['date'].max())" 2>/dev/null || echo "unknown")
+            echo "  Latest NDVI data: $LATEST_DATE"
+            echo "ndvi_available=true" >> $GITHUB_ENV
+          else
+            echo "⚠ NDVI CSV not found - will use fallback values"
+            echo "ndvi_available=false" >> $GITHUB_ENV
+          fi
+
+      # ── 5. Run cache update ────────────────────────────────────────────
+      #   • Prices  → data.gov.in API  (DATA_GOV_API_KEY secret)
+      #   • Rainfall → Open-Meteo API  (no key required)
+      #   • NDVI    → NDVI/gujarat_monthly_ndvi_clean_*.csv  (local CSV)
+      - name: Update monthly cache
+        env:
+          DATA_GOV_API_KEY: ${{ secrets.DATA_GOV_API_KEY }}
+        run: |
+          # Build argument list
+          ARGS="--yes"
+
+          YEAR="${{ github.event.inputs.year }}"
+          MONTH="${{ github.event.inputs.month }}"
+          [ -n "$YEAR" ]  && ARGS="$ARGS --year $YEAR"
+          [ -n "$MONTH" ] && ARGS="$ARGS --month $MONTH"
+          [ "${{ github.event.inputs.skip_prices }}" = "true" ] && ARGS="$ARGS --rainfall-only"
+
+          echo "Running: python update_monthly_cache.py $ARGS"
+          python update_monthly_cache.py $ARGS || {
+            echo "::warning::Cache update failed, attempting partial update..."
+            python update_monthly_cache.py $ARGS --rainfall-only || true
+          }
+
+# ── 6. Verify output ───────────────────────────────────────────────
+      - name: Verify cache files
+        run: |
+          echo "=== Cache Directory ==="
+          ls -lh monthly_cache/ || echo "No monthly_cache directory"
+
+          PRICE_COUNT=$(find monthly_cache/prices  -name "*.json" 2>/dev/null | wc -l || echo 0)
+          RAIN_COUNT=$(find  monthly_cache/rainfall -name "*.json" 2>/dev/null | wc -l || echo 0)
+          NDVI_COUNT=$(find  monthly_cache/ndvi     -name "*.json" 2>/dev/null | wc -l || echo 0)
+          META=$(cat monthly_cache/cache_metadata.json 2>/dev/null | python3 -c "import sys,json; d=json.load(sys.stdin); print(f\"period={d.get('update_year')}-{d.get('update_month'):02d}, commodities={len(d.get('commodities_cached',[]))}, districts={len(d.get('districts_cached',[]))})\"" 2>/dev/null || echo "metadata missing")
+
+          echo "Price files  : $PRICE_COUNT"
+          echo "Rainfall files: $RAIN_COUNT"
+          echo "NDVI files   : $NDVI_COUNT"
+          echo "Metadata     : $META"
+
+          # Set outputs for summary
+          echo "price_count=$PRICE_COUNT" >> $GITHUB_ENV
+          echo "rain_count=$RAIN_COUNT" >> $GITHUB_ENV
+          echo "ndvi_count=$NDVI_COUNT" >> $GITHUB_ENV
+
+          # Warn if prices are too few (but don't fail - might be testing)
+          if [ "$PRICE_COUNT" -lt 100 ] && [ "${{ github.event.inputs.skip_prices }}" != "true" ]; then
+            echo "::warning::Only $PRICE_COUNT price files generated - data.gov.in fetch may have failed"
+          fi
+
+          # Verify at least some data exists
+             if [ "$PRICE_COUNT" -eq 0 ] && [ "$RAIN_COUNT" -eq 0 ] && [ "$NDVI_COUNT" -eq 0 ]; then
+            echo "::error::No cache data generated at all!"
+            exit 1
+          fi
+
+      # ── 7. Prepare files for Hugging Face ──────────────────────────────
+      - name: Prepare deployment files
+        run: |
+          echo "Preparing files for Hugging Face deployment..."
+          
+          # Create a deployment staging directory
+          mkdir -p hf_deploy
+          
+          # Copy essential files for Hugging Face Space
+          cp -r monthly_cache hf_deploy/
+          cp app.py hf_deploy/ 2>/dev/null || echo "app.py not found"
+          cp -r src hf_deploy/ 2>/dev/null || echo "src/ not found"
+          cp district_latlon.csv hf_deploy/ 2>/dev/null || echo "district_latlon.csv not found"
+          cp README_HF.md hf_deploy/README.md 2>/dev/null || echo "README_HF.md not found"
+          cp requirements_hf.txt hf_deploy/requirements.txt 2>/dev/null || echo "requirements_hf.txt not found"
+          
+          # Copy model and processed data if they exist (only on force deploy)
+          if [ "${{ github.event.inputs.force_deploy }}" = "true" ]; then
+            echo "Force deploy enabled - copying all files..."
+            cp -r production_model hf_deploy/ 2>/dev/null || echo "production_model/ not found"
+            cp -r processed hf_deploy/ 2>/dev/null || echo "processed/ not found"
+          fi
+          
+          echo "Files prepared for deployment:"
+          du -sh hf_deploy/*
+
+      # ── 8. Upload to Hugging Face Space ────────────────────────────────
+      - name: Upload to Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          FORCE_DEPLOY: ${{ github.event.inputs.force_deploy }}
+        run: |
+          python ci_upload_to_hf.py
+
+      # ── 9. Verify Hugging Face deployment ──────────────────────────────
+      - name: Verify Hugging Face deployment
+        if: success()
+        run: |
+          echo "✅ Deployment successful!"
+          echo "Space URL: https://huggingface.co/spaces/princegh410/crop-price"
+          echo ""
+          echo "Verifying space is accessible..."
+          curl -f -s -o /dev/null -w "HTTP Status: %{http_code}\n" \
+            "https://huggingface.co/spaces/princegh410/crop-price" || \
+            echo "::warning::Could not verify space URL (may still be building)"
+
+      # ── 10. Summary ────────────────────────────────────────────────────
+      - name: Write job summary
+        if: always()
+        run: |
+          UPDATE_STATUS="${{ job.status }}"
+          
+          {
+            echo "## 📊 Monthly Cache Update - $(date +'%Y-%m-%d %H:%M UTC')"
+            echo ""
+            echo "**Status:** $UPDATE_STATUS"
+            echo ""
+            echo "### Data Updated"
+            echo ""
+            echo "| Data type | Files updated | Status |"
+            echo "|-----------|---------------|--------|"
+            echo "| Prices (data.gov.in) | ${price_count:-0} | $([ ${price_count:-0} -gt 100 ] && echo '✅' || echo '⚠️') |"
+            echo "| Rainfall (Open-Meteo) | ${rain_count:-0} | $([ ${rain_count:-0} -gt 10 ] && echo '✅' || echo '⚠️') |"
+            echo "| NDVI (CSV) | ${ndvi_count:-0} | $([ ${ndvi_count:-0} -gt 10 ] && echo '✅' || echo '⚠️') |"
+            echo ""
+            echo "### Deployment"
+            echo ""
+            echo "- **Space:** [princegh410/crop-price](https://huggingface.co/spaces/princegh410/crop-price)"
+            echo "- **Deploy Type:** $([ "${{ github.event.inputs.force_deploy }}" = "true" ] && echo 'Full (with models)' || echo 'Cache only')"
+            echo "- **Trigger:** $([ "${{ github.event_name }}" = "schedule" ] && echo 'Scheduled' || echo 'Manual')"
+            echo ""
+            if [ "$UPDATE_STATUS" != "success" ]; then
+              echo "### ⚠️ Issues"
+              echo ""
+              echo "Check the workflow logs for details."
+            fi
+          } >> $GITHUB_STEP_SUMMARY

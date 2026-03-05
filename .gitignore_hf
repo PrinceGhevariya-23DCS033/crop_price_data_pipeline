@@ -1,0 +1,85 @@
+# Hugging Face Space .gitignore
+# For Gujarat Crop Price Forecasting System
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment (don't deploy venv to HF)
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter Notebooks (if you have them, they're not needed in HF)
+*.ipynb
+.ipynb_checkpoints/
+Notbooks/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Environment variables (API keys - not needed for HF cache-only mode)
+.env
+.env.local
+
+# Test files (not needed in production)
+test_*.py
+*_test.py
+tests/
+
+# Data files that are NOT needed in HF (already cached)
+# Keep these commented if you want to include them
+# raw/
+# data/
+# missing/
+
+# IMPORTANT: DO NOT IGNORE THESE - THEY ARE REQUIRED!
+# monthly_cache/          # MUST be included!
+# production_model/       # MUST be included!
+# processed/              # MUST be included!
+# src/                    # MUST be included!
+
+# Documentation source files (keep only README.md)
+DEPLOYMENT.md
+API_USAGE.md
+DISTRICT_UPDATE.md
+PROJECT_SUMMARY.md
+MONTHLY_UPDATE_GUIDE.md
+HUGGINGFACE_DEPLOYMENT.md
+
+# Scripts not needed in HF
+run_server.py
+start.bat
+start.sh
+check_model_features.py
+update_monthly_cache.py  # Run locally, not on HF
+
+# Build/deployment files
+.git/
+.gitattributes
+.github/
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/

@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files (if large)
+# Uncomment if needed:
+# processed/*.csv
+# final/*.csv
+# rain/*.csv
+
+# Logs
+*.log
+logs/
+cache_update_log.txt
+
+# Generated cache (created by GitHub workflow - DO NOT UPLOAD)
+monthly_cache/
+
+# Model artifacts (if you want to exclude from git)
+# production_model/*.pkl
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build artifacts
+build/
+
+# NDVI backups and large raw files (created by update_ndvi_fallback.py)
+*_backup.csv
+NDVI/*_backup.csv
+NDVI/Gujarat_Monthly_NDVI_2005_2024.csv
+
+# GitHub Actions staging
+hf_deploy/
+dist/
+*.egg-info/
