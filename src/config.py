@@ -163,6 +163,55 @@ def load_district_coordinates():
 DISTRICT_COORDS = load_district_coordinates()
 
 
+# ============ AGMARKNET API DISTRICT NAME MAPPING ============
+# Maps the internal (normalized, lowercase) key → exact district string
+# expected by data.gov.in Agmarknet filters[District] (case-sensitive).
+AGMARKNET_DISTRICT_NAMES: dict = {
+    "ahmadabad"      : "Ahmedabad",
+    "amreli"         : "Amreli",
+    "anand"          : "Anand",
+    "aravalli"       : "Aravalli",
+    "banaskantha"    : "Banaskantha",
+    "bharuch"        : "Bharuch",
+    "bhavnagar"      : "Bhavnagar",
+    "botad"          : "Botad",
+    "chhotaudaipur"  : "Chhota Udaipur",
+    "dahod"          : "Dahod",
+    "devbhumidwarka" : "Devbhumi Dwarka",
+    "gandhinagar"    : "Gandhinagar",
+    "girsomnath"     : "Gir Somnath",
+    "jamnagar"       : "Jamnagar",
+    "junagadh"       : "Junagadh",
+    "kachchh"        : "Kutch",
+    "kheda"          : "Kheda",
+    "mahesana"       : "Mehsana",
+    "mahisagar"      : "Mahisagar",
+    "morbi"          : "Morbi",
+    "narmada"        : "Narmada",
+    "navsari"        : "Navsari",
+    "panchmahals"    : "Panchmahal",
+    "patan"          : "Patan",
+    "porbandar"      : "Porbandar",
+    "rajkot"         : "Rajkot",
+    "sabarkantha"    : "Sabarkantha",
+    "surat"          : "Surat",
+    "surendranagar"  : "Surendranagar",
+    "tapi"           : "Tapi",
+    "thedangs"       : "The Dangs",
+    "vadodara"       : "Vadodara",
+    "valsad"         : "Valsad",
+}
+
+
+def agmarknet_district_name(district: str) -> str:
+    """
+    Return the exact district name expected by the data.gov.in Agmarknet API
+    (filters[District] is case-sensitive on that endpoint).
+
+    Falls back to Title-cased normalized name for any unknown district.
+    """
+    norm = normalize_district_name(district)
+    return AGMARKNET_DISTRICT_NAMES.get(norm, norm.title())
 
 
 # Crop growth horizons (months from sowing to harvest)
