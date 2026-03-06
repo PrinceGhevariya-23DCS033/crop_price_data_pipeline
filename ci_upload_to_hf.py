@@ -14,7 +14,7 @@ from pathlib import Path
 from datetime import datetime
 
 # ─── Config ────────────────────────────────────────────────────────────────────
-HF_SPACE_ID = "princegh410/crop-price"   # <username>/<space-name>  (lowercase)
+HF_SPACE_ID = "princegh410/Crop_price"   # <username>/<space-name>  (must match exact case on HF)
 
 # Files/directories to include in full deployment
 DEPLOYMENT_FILES = {
