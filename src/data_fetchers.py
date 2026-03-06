@@ -42,7 +42,10 @@ class MandiPriceFetcher:
         self.resource_id = "35985678-0d79-46b4-9ed6-6f13308a1d24"
         self.base_url = f"https://api.data.gov.in/resource/{self.resource_id}"
         self.timeout = 30
-        self.max_retries = 3
+        # Retry strategy: attempts per round and backoff between rounds (seconds)
+        self.attempts_per_round = 5
+        # First backoff: 2 minutes, second backoff: 5 minutes
+        self.retry_backoffs = [120, 300]
         
         if not self.use_api:
             print("ℹ️  API disabled - will use CSV fallback")
@@ -92,57 +95,71 @@ class MandiPriceFetcher:
         # Calculate cutoff date
         cutoff_date = datetime.now() - timedelta(days=days_back)
         
-        for attempt in range(self.max_retries):
-            try:
-                response = requests.get(
-                    self.base_url,
-                    params=params,
-                    timeout=self.timeout
-                )
-                
-                if response.status_code == 200:
-                    data = response.json()
-                    records = data.get("records", [])
-                    
-                    if not records:
-                        return pd.DataFrame()
-                    
-                    df = pd.DataFrame(records)
-                    
-                    # Parse dates and prices
-                    df["Arrival_Date"] = pd.to_datetime(
-                        df["Arrival_Date"], 
-                        dayfirst=True, 
-                        errors="coerce"
-                    )
-                    df["Modal_Price"] = pd.to_numeric(
-                        df["Modal_Price"], 
-                        errors="coerce"
-                    )
-                    
-                    # Remove invalid rows
-                    df = df.dropna(subset=["Commodity", "Arrival_Date", "Modal_Price"])
-                    
-                    if df.empty:
-                        return pd.DataFrame()
-                    
-                    # FILTER: Keep only recent data
-                    df = df[df["Arrival_Date"] >= cutoff_date]
-                    
-                    # Sort by date descending (newest first)
-                    df = df.sort_values("Arrival_Date", ascending=False)
-                    
-                    return df
-                
-                else:
-                    if attempt < self.max_retries - 1:
-                        time.sleep(2 ** attempt)
-            
-            except (Timeout, RequestException) as e:
-                if attempt < self.max_retries - 1:
-                    time.sleep(2 ** attempt)
-        
-        return pd.DataFrame()
+        # Helper to perform GET with multi-round retry/backoff strategy
+        def _get_with_retries(url, params):
+            rounds = len(self.retry_backoffs) + 1
+
+            for r in range(rounds):
+                for attempt in range(self.attempts_per_round):
+                    try:
+                        response = requests.get(url, params=params, timeout=self.timeout)
+
+                        if response.status_code == 200:
+                            return response
+
+                        # Non-200 status: treat as failure and retry
+                        # short sleep before next attempt
+                        if attempt < self.attempts_per_round - 1:
+                            time.sleep(2 ** min(attempt, 6))
+
+                    except (Timeout, RequestException):
+                        if attempt < self.attempts_per_round - 1:
+                            time.sleep(2 ** min(attempt, 6))
+                        else:
+                            # fallthrough to possibly sleep between rounds
+                            pass
+
+                # If here, this round failed entirely
+                if r < len(self.retry_backoffs):
+                    backoff = self.retry_backoffs[r]
+                    print(f"    ⚠ API attempts failed for this round — sleeping {backoff//60} minutes before retrying...")
+                    time.sleep(backoff)
+
+            return None
+
+        response = _get_with_retries(self.base_url, params)
+        if response is None:
+            return pd.DataFrame()
+
+        try:
+            data = response.json()
+        except Exception:
+            return pd.DataFrame()
+
+        records = data.get("records", [])
+
+        if not records:
+            return pd.DataFrame()
+
+        df = pd.DataFrame(records)
+
+        # Parse dates and prices
+        df["Arrival_Date"] = pd.to_datetime(df["Arrival_Date"], dayfirst=True, errors="coerce")
+        df["Modal_Price"] = pd.to_numeric(df["Modal_Price"], errors="coerce")
+
+        # Remove invalid rows
+        df = df.dropna(subset=["Commodity", "Arrival_Date", "Modal_Price"])
+
+        if df.empty:
+            return pd.DataFrame()
+
+        # FILTER: Keep only recent data
+        df = df[df["Arrival_Date"] >= cutoff_date]
+
+        # Sort by date descending (newest first)
+        df = df.sort_values("Arrival_Date", ascending=False)
+
+        return df
     
     
     def compute_monthly_average(
