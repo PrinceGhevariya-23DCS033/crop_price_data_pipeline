@@ -18,7 +18,7 @@ from datetime import datetime, timedelta
 from requests.exceptions import RequestException, Timeout
 
 # Import configuration
-from config import DISTRICT_COORDS, normalize_district_name
+from config import DISTRICT_COORDS, normalize_district_name, agmarknet_district_name
 
 
 # ============ MANDI PRICE FETCHER ============
@@ -89,9 +89,10 @@ class MandiPriceFetcher:
         
         if commodity:
             params["filters[Commodity]"] = commodity
-        
+
         if district:
-            params["filters[District]"] = district
+            # Use exact Agmarknet API name (case-sensitive on data.gov.in)
+            params["filters[District]"] = agmarknet_district_name(district)
         
         # Calculate cutoff date
         if from_date is not None:
