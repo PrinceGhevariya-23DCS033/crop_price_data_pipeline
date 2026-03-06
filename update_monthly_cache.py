@@ -81,13 +81,17 @@ def update_price_cache(
             print(f"\n[{current}/{total}] {commodity} - {district}")
             
             try:
-                # Use get_current_price_with_fallback (30-day average)
+                # Read existing cache to drive smart date-based search
+                existing_cache = cache.get_price(commodity, district)
+
+                # Use get_current_price_with_fallback with smart fallback logic
                 price_data = fetcher.get_current_price_with_fallback(
                     commodity=commodity,
                     district=district,
                     reference_date=datetime(year, month, 20),  # Use 20th as reference
                     days_15=15,
-                    days_30=30
+                    days_30=30,
+                    last_cached_data=existing_cache
                 )
                 
                 if price_data:
@@ -243,6 +247,59 @@ def update_ndvi_cache(
     print(f"{'='*70}")
 
 
+def run_test_lookup(commodity: str, district: str):
+    """
+    Test price lookup for a single commodity-district pair.
+    Shows exactly which date range is searched, which source wins, and what fallback is used.
+    """
+    print("="*70)
+    print("\U0001f9ea TEST MODE - SINGLE PRICE LOOKUP")
+    print("="*70)
+    print(f"  Commodity : {commodity}")
+    print(f"  District  : {district}")
+    print()
+
+    cache = MonthlyDataCache()
+    price_fetcher = MandiPriceFetcher()
+
+    # Show existing cache state
+    existing = cache.get_price(commodity, district)
+    if existing:
+        print("\U0001f4c2 Existing cache found:")
+        print(f"   last_date         : {existing.get('last_date', 'N/A')}")
+        print(f"   monthly_mean_price: \u20b9{existing.get('monthly_mean_price', 0):.2f}")
+        print(f"   data_source       : {existing.get('data_source', 'N/A')}")
+        print(f"   cached_at         : {existing.get('cached_at', 'N/A')}")
+        print()
+        print("  → Will search API from that last_date onward.")
+        print("  → If API returns nothing, cached price will be REUSED (no CSV).")
+    else:
+        print("\U0001f4c2 No existing cache found.")
+        print("  → Will search API back to 2026-01-01.")
+        print("  → If API returns nothing, CSV fallback will be used.")
+    print()
+
+    result = price_fetcher.get_current_price_with_fallback(
+        commodity=commodity,
+        district=district,
+        reference_date=datetime.now(),
+        last_cached_data=existing
+    )
+
+    print()
+    print("="*70)
+    if result:
+        print("\u2705 RESULT:")
+        print(f"   monthly_mean_price : \u20b9{result.get('monthly_mean_price', 0):.2f}")
+        print(f"   data_source        : {result.get('data_source', 'N/A')}")
+        print(f"   price_source       : {result.get('price_source', 'N/A')}")
+        print(f"   last_date          : {result.get('last_date', 'N/A')}")
+        print(f"   days_traded        : {result.get('days_traded', 0)}")
+    else:
+        print("\u274c No price data found for this combination.")
+    print("="*70)
+
+
 def main():
     """Main update function."""
     
@@ -281,8 +338,30 @@ def main():
         action="store_true",
         help="Skip confirmation prompts (for CI/automated runs)"
     )
-    
+    parser.add_argument(
+        "--test-commodity",
+        type=str,
+        default=None,
+        metavar="COMMODITY",
+        help="Test price lookup for a single commodity (use with --test-district)"
+    )
+    parser.add_argument(
+        "--test-district",
+        type=str,
+        default=None,
+        metavar="DISTRICT",
+        help="Test price lookup for a single district (use with --test-commodity)"
+    )
+
     args = parser.parse_args()
+
+    # ── Test mode: single commodity-district lookup ─────────────────────
+    if args.test_commodity or args.test_district:
+        if not (args.test_commodity and args.test_district):
+            print("❌  Both --test-commodity and --test-district are required for test mode.")
+            return
+        run_test_lookup(args.test_commodity, args.test_district)
+        return
     
     # Get current date
     now = datetime.now()
