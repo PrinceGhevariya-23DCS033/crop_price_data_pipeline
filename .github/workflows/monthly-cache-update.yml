@@ -169,11 +169,11 @@ jobs:
         if: success()
         run: |
           echo "✅ Deployment successful!"
-          echo "Space URL: https://huggingface.co/spaces/princegh410/crop-price"
+          echo "Space URL: https://huggingface.co/spaces/princegh410/Crop_price"
           echo ""
           echo "Verifying space is accessible..."
           curl -f -s -o /dev/null -w "HTTP Status: %{http_code}\n" \
-            "https://huggingface.co/spaces/princegh410/crop-price" || \
+            "https://huggingface.co/spaces/princegh410/Crop_price" || \
             echo "::warning::Could not verify space URL (may still be building)"
 
       # ── 10. Summary ────────────────────────────────────────────────────
@@ -197,7 +197,7 @@ jobs:
             echo ""
             echo "### Deployment"
             echo ""
-            echo "- **Space:** [princegh410/crop-price](https://huggingface.co/spaces/princegh410/crop-price)"
+            echo "- **Space:** [princegh410/Crop_price](https://huggingface.co/spaces/princegh410/Crop_price)"
             echo "- **Deploy Type:** $([ "${{ github.event.inputs.force_deploy }}" = "true" ] && echo 'Full (with models)' || echo 'Cache only')"
             echo "- **Trigger:** $([ "${{ github.event_name }}" = "schedule" ] && echo 'Scheduled' || echo 'Manual')"
             echo ""
