@@ -59,6 +59,7 @@ class MandiPriceFetcher:
         commodity: Optional[str] = None,
         district: Optional[str] = None,
         days_back: int = 30,
+        from_date: Optional[datetime] = None,
         limit: int = 10000
     ) -> pd.DataFrame:
         """
@@ -93,7 +94,10 @@ class MandiPriceFetcher:
             params["filters[District]"] = district
         
         # Calculate cutoff date
-        cutoff_date = datetime.now() - timedelta(days=days_back)
+        if from_date is not None:
+            cutoff_date = from_date
+        else:
+            cutoff_date = datetime.now() - timedelta(days=days_back)
         
         # Multi-round retry with backoff:
         #   Round 1: 5 attempts (5 s apart)
@@ -294,28 +298,37 @@ class MandiPriceFetcher:
         district: str,
         reference_date: Optional[datetime] = None,
         days_15: int = 15,
-        days_30: int = 30
+        days_30: int = 30,
+        last_cached_data: Optional[Dict] = None
     ) -> Optional[Dict]:
         """
         Get current price with smart fallback logic FOR CACHE JSON FORMAT.
-        Returns data in monthly cache format.
-        
-        Args:
-            commodity: Crop name
-            district: District name
-            reference_date: Reference date (default: today)
-            days_15: Days for first attempt 
-            days_30: Days for second attempt
-            
+
+        Search strategy:
+          • No existing cache  → search API from 2026-01-01; if nothing → CSV fallback.
+          • Existing cache     → search API from last_date in cached JSON;
+                                 if nothing → reuse cached JSON (no CSV).
+
         Returns:
-            Dict in cache format: {commodity, district, year, month, cached_at, 
+            Dict in cache format: {commodity, district, year, month, cached_at,
                                   monthly_mean_price, days_traded, data_source, last_date}
         """
-        
         if reference_date is None:
             reference_date = datetime.now()
-        
-        # STEP 1: Try API first (last 30 days guaranteed fresh data)
+
+        # ── Determine API search start date ────────────────────────────────
+        ANCHOR_DATE = datetime(2026, 1, 1)  # Earliest date to search on first run
+
+        if last_cached_data and last_cached_data.get("last_date"):
+            search_from = datetime.strptime(last_cached_data["last_date"], "%Y-%m-%d")
+            use_cache_fallback = True
+            print(f"  (resuming from last cached date: {search_from.strftime('%Y-%m-%d')})")
+        else:
+            search_from = ANCHOR_DATE
+            use_cache_fallback = False
+            print(f"  (first run: searching back to {ANCHOR_DATE.strftime('%Y-%m-%d')})")
+
+        # ── STEP 1: Try API ─────────────────────────────────────────────────
         if self.use_api:
             print(f"  Fetching from API: {commodity} - {district}")
             try:
@@ -323,17 +336,14 @@ class MandiPriceFetcher:
                     state="Gujarat",
                     commodity=commodity,
                     district=district,
-                    days_back=days_30,  # Last 30 days
+                    from_date=search_from,
                     limit=10000
                 )
-                
+
                 if not api_df.empty:
                     latest_date = api_df["Arrival_Date"].max()
                     oldest_date = api_df["Arrival_Date"].min()
-                    
                     print(f"    ✓ API: {len(api_df)} records from {oldest_date.strftime('%Y-%m-%d')} to {latest_date.strftime('%Y-%m-%d')}")
-                    
-                    # Return in cache format
                     return {
                         "commodity": commodity,
                         "district": district,
@@ -347,55 +357,58 @@ class MandiPriceFetcher:
                         "price_source": "API"
                     }
                 else:
-                    print(f"    ⚠ API returned no recent data")
-            
+                    print(f"    ⚠ API returned no data since {search_from.strftime('%Y-%m-%d')}")
+
             except Exception as e:
                 print(f"    ⚠ API fetch error: {e}")
-        
-        # STEP 2: Fallback to CSV
+
+        # ── STEP 2: Fallback ────────────────────────────────────────────────
+        if use_cache_fallback and last_cached_data and last_cached_data.get("monthly_mean_price"):
+            # Subsequent run — no new API data → reuse last cached price as-is
+            print(f"  ↩ No new API data — reusing last cached price (last_date: {last_cached_data.get('last_date', 'N/A')})")
+            result = dict(last_cached_data)
+            result["price_source"] = f"CACHE_REUSE (no new data since {last_cached_data.get('last_date', 'N/A')})"
+            result["data_source"] = "CACHE_REUSE"
+            result["cached_at"] = datetime.now().isoformat()
+            return result
+
+        # ── STEP 3: CSV fallback (first run only) ───────────────────────────
         print(f"  Falling back to CSV data...")
-        
+
         commodity_file = commodity.lower().replace(" ", "_") + "_final.csv"
         file_path = os.path.join("processed", commodity_file)
-        
+
         if not os.path.exists(file_path):
             print(f"    ❌ CSV file not found: {file_path}")
             return None
-        
+
         df = pd.read_csv(file_path)
-        
+
         if "date" not in df.columns or "monthly_mean_price" not in df.columns:
             print(f"    ❌ CSV missing required columns")
             return None
-        
+
         df["date"] = pd.to_datetime(df["date"])
-        
+
         # Filter for district
         from config import normalize_district_name
         normalized_district = normalize_district_name(district)
-        
+
         if "district" in df.columns:
             df["district_norm"] = df["district"].apply(normalize_district_name)
             df = df[df["district_norm"] == normalized_district].copy()
-        
+
         if df.empty:
             print(f"    ❌ No CSV data for district: {district}")
             return None
-        
-        # Sort by date and get last 30 days
+
+        # Use the most recent rows available
         df = df.sort_values("date", ascending=False)
-        cutoff = reference_date - timedelta(days=days_30)
-        df_recent = df[df["date"] >= cutoff]
-        
-        if df_recent.empty:
-            # Use latest available data
-            df_recent = df.head(days_30)
-        
+        df_recent = df.head(days_30)
         latest_date = df_recent["date"].max()
-        
+
         print(f"    ✓ CSV: {len(df_recent)} records, latest: {latest_date.strftime('%Y-%m-%d')}")
-        
-        # Return in cache format
+
         return {
             "commodity": commodity,
             "district": district,
@@ -408,35 +421,6 @@ class MandiPriceFetcher:
             "last_date": latest_date.strftime("%Y-%m-%d"),
             "price_source": "CSV"
         }
-        
-        if not df_30.empty and len(df_30) >= 1:
-            return {
-                "monthly_mean_price": df_30["monthly_mean_price"].mean(),
-                "days_traded": len(df_30),
-                "days_window": days_30,
-                "data_until_date": latest_date.strftime("%Y-%m-%d"),
-                "is_recent": len(df_30) >= 3,  # Flag if very limited data
-                "price_source": f"CSV: Average of last {len(df_30)} days (within {days_30} day window)",
-                "data_source": "CSV"
-            }
-        
-        # Try 3: Latest available (regardless of age)
-        if not df.empty:
-            latest_row = df.iloc[0]
-            days_old = (reference_date - latest_date).days
-            
-            return {
-                "monthly_mean_price": latest_row["monthly_mean_price"],
-                "days_traded": 1,
-                "days_window": days_old,
-                "data_until_date": latest_date.strftime("%Y-%m-%d"),
-                "is_recent": False,
-                "price_source": f"⚠ CSV: Latest available price from {days_old} days ago",
-                "warning": f"No recent data! Latest available: {latest_date.strftime('%Y-%m-%d')}",
-                "data_source": "CSV"
-            }
-        
-        return None
 
 
 # ============ WEATHER DATA FETCHER ============
