@@ -95,9 +95,15 @@ class MandiPriceFetcher:
         # Calculate cutoff date
         cutoff_date = datetime.now() - timedelta(days=days_back)
         
-        # Helper to perform GET with multi-round retry/backoff strategy
+        # Multi-round retry with backoff:
+        #   Round 1: 5 attempts (5 s apart)
+        #   → sleep 2 min →
+        #   Round 2: 5 attempts (5 s apart)
+        #   → sleep 5 min →
+        #   Round 3: 5 final attempts (5 s apart) then give up
         def _get_with_retries(url, params):
-            rounds = len(self.retry_backoffs) + 1
+            rounds = len(self.retry_backoffs) + 1          # 3 rounds total
+            INTER_ATTEMPT_SLEEP = 5                        # seconds between attempts within a round
 
             for r in range(rounds):
                 for attempt in range(self.attempts_per_round):
@@ -107,22 +113,19 @@ class MandiPriceFetcher:
                         if response.status_code == 200:
                             return response
 
-                        # Non-200 status: treat as failure and retry
-                        # short sleep before next attempt
+                        # Non-200: short wait then retry
                         if attempt < self.attempts_per_round - 1:
-                            time.sleep(2 ** min(attempt, 6))
+                            time.sleep(INTER_ATTEMPT_SLEEP)
 
                     except (Timeout, RequestException):
                         if attempt < self.attempts_per_round - 1:
-                            time.sleep(2 ** min(attempt, 6))
-                        else:
-                            # fallthrough to possibly sleep between rounds
-                            pass
+                            time.sleep(INTER_ATTEMPT_SLEEP)
 
-                # If here, this round failed entirely
+                # All attempts in this round failed — sleep before next round
                 if r < len(self.retry_backoffs):
                     backoff = self.retry_backoffs[r]
-                    print(f"    ⚠ API attempts failed for this round — sleeping {backoff//60} minutes before retrying...")
+                    mins = backoff // 60
+                    print(f"    ⚠ Round {r+1} failed ({self.attempts_per_round} attempts) — sleeping {mins} min before round {r+2}...")
                     time.sleep(backoff)
 
             return None
